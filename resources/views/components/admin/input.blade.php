@@ -1,0 +1,1 @@
+<input {{ $attributes->merge(['class' => 'form-control mb-3 mr-sm-2']) }} />
