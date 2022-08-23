@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\JobTypeController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\SubscriberController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -26,11 +31,21 @@ Route::middleware('auth')->group(function ()
     {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::group(['prefix' => 'admin','name' => 'admin.'], function ()
+        Route::group(['prefix' => 'admin'], function ()
         {
-            Route::resource('categories', CategoryController::class, [
-                'name' => 'category.'
-            ]);
+            Route::resource('categories', CategoryController::class);
+
+            Route::resource('cities', CityController::class);
+
+            Route::resource('subscribers', SubscriberController::class);
+
+            Route::resource('countries', CountryController::class);
+
+            Route::resource('jobs', PostController::class);
+
+            Route::resource('job-types', JobTypeController::class);
+
+
         });
 
     });

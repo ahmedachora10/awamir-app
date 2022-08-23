@@ -1,4 +1,4 @@
-<div class="col-12 grid-margin">
+<div class="{{ $cls }} col-12 grid-margin">
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">

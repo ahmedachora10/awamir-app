@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\AlphaSpace;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateCityRequest extends FormRequest
@@ -13,7 +14,7 @@ class UpdateCityRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->user()->hasRole('admin|writer');
     }
 
     /**
@@ -24,7 +25,8 @@ class UpdateCityRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required', new AlphaSpace],
+            'country_id' => ['required', 'integer', 'exists:countries,id']
         ];
     }
 }

@@ -3,10 +3,19 @@
     <ul class="nav">
 
         <x-admin.medium-card-user />
-            <x-admin.link title="Dashboard" icon="home" route="dashboard" />
+            @role('admin')
+                <x-admin.link title="للوحة تحكم" icon="home" route="dashboard" />
+                <x-admin.link title="أنواع الوظائف" icon="format-list-bulleted" route="categories.index" />
+                <x-admin.link title="المدن" icon="lan" route="cities.index" />
+                <x-admin.link title="الدول" icon="lan" route="countries.index" />
+                <x-admin.link title="المشتركين" icon="account-multiple-plus" route="subscribers.index" />
+            @endrole
 
-        {{-- <x-admin.link title="Roles" icon="account-key" route="admin.roles.show" />
-        <x-admin.link title="Permissions" icon="key-variant" route="admin.permissions.show" /> --}}
+            @role('admin|writer')
+                <x-admin.link title="Jobs" icon="lan" route="jobs.index" />
+                <x-admin.link title="Job Types" icon="lan" route="job-types.index" />
+            @endrole
+                {{-- <x-admin.link title="Permissions" icon="key-variant" route="admin.permissions.show" /> --}}
 
 
         {{-- <x-admin.link title="Settings" icon="settings" route="admin.settings.show" /> --}}

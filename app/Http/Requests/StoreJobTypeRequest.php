@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Rules\AlphaSpace;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCityRequest extends FormRequest
+class StoreJobTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,7 @@ class StoreCityRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', new AlphaSpace],
-            'country_id' => ['required', 'integer', 'exists:countries,id']
+            'name' => ['required', new AlphaSpace]
         ];
     }
 }

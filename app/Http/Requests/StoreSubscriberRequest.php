@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\AlphaSpace;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCityRequest extends FormRequest
+class StoreSubscriberRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +13,7 @@ class StoreCityRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->user()->hasRole('admin|writer');
+        return true;
     }
 
     /**
@@ -25,8 +24,14 @@ class StoreCityRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', new AlphaSpace],
-            'country_id' => ['required', 'integer', 'exists:countries,id']
+            'email' => 'required|email|unique:subscribers,email'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'email.unique' => 'هذا البريد الالكتروني موجود مسبقا'
         ];
     }
 }

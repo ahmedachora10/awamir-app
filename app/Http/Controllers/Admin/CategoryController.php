@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
@@ -15,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::latest()->get();
+        return view('pages.admin.categories.index', compact('categories'));
     }
 
     /**
@@ -25,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.categories.create');
     }
 
     /**
@@ -36,18 +38,9 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
-    }
+        Category::create($request->validated());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Category $category)
-    {
-        //
+        return redirect()->route('categories.index')->with('success', 'تم اضافة القسم بنجاح');
     }
 
     /**
@@ -58,7 +51,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('pages.admin.categories.edit', compact('category'));
     }
 
     /**
@@ -70,7 +63,12 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $request->validated();
+
+        $category->name = $request->input('name');
+        $category->save();
+
+        return redirect()->route('categories.index')->with('success', 'تم تحديث القسم بنجاح');
     }
 
     /**
@@ -81,6 +79,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', 'تم حذف القسم بنجاح');
     }
 }

@@ -12,6 +12,7 @@ class Table extends Component
     public string $icon;
     public $route;
     public $buttonName;
+    public string|null $cls;
 
 
     /**
@@ -19,13 +20,14 @@ class Table extends Component
      *
      * @return void
      */
-    public function __construct($title, array $columns, $icon = 'account-plus', $route = '', $buttonName="")
+    public function __construct($title, array $columns, $icon = 'account-plus', $route = '', $buttonName="", $cls = null)
     {
         $this->title = $title;
         $this->columns = $columns;
         $this->icon = $icon;
         $this->route = $route;
         $this->buttonName = $buttonName;
+        $this->cls = $cls;
     }
 
     /**
