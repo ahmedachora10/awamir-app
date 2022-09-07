@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\Country;
+use App\Models\JobType;
 
 class PostController extends Controller
 {
@@ -27,7 +31,16 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.jobs.create');
+
+        $countries = Country::all(['id', 'name']);
+
+        $categories = Category::all();
+
+        $jobTypes = JobType::all();
+
+        $cities = City::all(['id', 'country_id', 'name']);
+
+        return view('pages.admin.jobs.create', compact('countries', 'categories', 'jobTypes', 'cities'));
     }
 
     /**

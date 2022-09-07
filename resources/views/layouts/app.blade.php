@@ -32,6 +32,23 @@
 
     <style>
         .form-control {font-size: 0.9125rem !important;}
+
+        .form-check-reverse {
+            padding-right: 1.5em;
+            padding-left: 0;
+            text-align: right;
+        }
+
+        .form-switch.form-check-reverse {
+            padding-right: 2.5em;
+            padding-left: 0;
+        }
+
+        .form-switch.form-check-reverse .form-check-input {
+            margin-right: -2.5em;
+            margin-left: 0;
+        }
+
     </style>
 
     <!-- Scripts -->
@@ -50,6 +67,7 @@
 
             <div class="main-panel">
                 <div class="content-wrapper">
+                    <x-admin.message />
                     {{ $slot }}
                 </div>
             </div>

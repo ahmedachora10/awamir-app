@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('ads', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->mediumText('content')->nullable();
-            $table->char('type', 20);
+            $table->mediumText('content');
+            $table->enum('status', ['1', '2'])->default('1');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('ads');
     }
 };

@@ -1,9 +1,5 @@
 <x-app-layout>
 
-    @if (session()->has('success'))
-        <h5 class="me-2 mb-2 py-3 btn-inverse-success btn-fw">{{ session()->get('success') }}</h5>
-    @endif
-
     <x-admin.headline title="المشتركين" icon="folder-google-drive"/>
 
     <x-admin.table title="جميع المشتركين" icon="folder-plus" :route="route('subscribers.create')"  :columns="['email', 'actions']">

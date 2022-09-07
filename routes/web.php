@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // auth()->user()->attachRole('admin');
     return view('welcome');
 });
 

@@ -1,9 +1,5 @@
 <x-app-layout>
 
-    @if (session()->has('success'))
-        <h5 class="me-2 mb-2 py-3 btn-inverse-success btn-fw">{{ session()->get('success') }}</h5>
-    @endif
-
     <x-admin.headline title="Jobs" icon="folder-google-drive"/>
 
     <x-admin.table title="All Jobs" icon="folder-plus" :route="route('jobs.create')"  :columns="['name', 'actions']">
@@ -20,7 +16,7 @@
             </tr>
         @empty
             <tr>
-                <td>{{ __('No Categories') }}</td>
+                <td>{{ __('لا توجد وظائف لعرضها') }}</td>
             </tr>
         @endforelse
 </x-admin.table>

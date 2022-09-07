@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Setting extends Model
+class Ad extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'content', 'type'];
-
+    protected $fillable = ['name', 'content', 'status'];
 }

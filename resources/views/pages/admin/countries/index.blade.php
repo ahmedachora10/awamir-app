@@ -1,9 +1,5 @@
 <x-app-layout>
 
-    @if (session()->has('success'))
-        <h5 class="me-2 mb-2 py-3 btn-inverse-success btn-fw">{{ session()->get('success') }}</h5>
-    @endif
-
     <x-admin.headline title="Countries" icon="folder-google-drive"/>
 
     <x-admin.table title="All Countries" icon="folder-plus" :route="route('countries.create')"  :columns="['name', 'actions']">
