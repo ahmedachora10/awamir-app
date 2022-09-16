@@ -1,18 +1,31 @@
 <?php
 
-namespace App\Http\Helpers;
-
 use App\Models\Setting;
-
-// $allSettings = Setting::all('name', 'content');
 
 if (!function_exists('settings')) {
 
 
-    // function settings( $name = '' ) {
-    //     global $allSettings;
-    //     $setting = $allSettings->where('name', $name);
-    //     return $setting->count() > 0 ? $setting->first()->content : null;
-    // }
+    function settings(string $name)
+    {
+        return (new class {
+            private static $_instance = null;
+
+            public function checker(string $name)
+            {
+                $setting = collect(self::getInstance())->where('name', $name)->first();
+                return $setting ? $setting->content : null;
+            }
+
+            private static function getInstance()
+            {
+                if(self::$_instance === null) {
+                    self::$_instance = Setting::all();
+                }
+
+                return self::$_instance;
+            }
+
+        })->checker($name);
+    }
 
 }

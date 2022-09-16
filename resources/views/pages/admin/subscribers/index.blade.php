@@ -2,6 +2,11 @@
 
     <x-admin.headline title="المشتركين" icon="folder-google-drive"/>
 
+    @livewireStyles
+
+    @livewire('admin.send-email-to-subscribers')
+
+
     <x-admin.table title="جميع المشتركين" icon="folder-plus" :route="route('subscribers.create')"  :columns="['email', 'actions']">
         @forelse($subscribers as $subscriber)
             <tr>
@@ -19,5 +24,7 @@
                 <td>{{ __('No Cities') }}</td>
             </tr>
         @endforelse
-</x-admin.table>
+    </x-admin.table>
+
+    @livewireScripts
 </x-app-layout>

@@ -5,30 +5,21 @@
     <!-- Cards Info -->
     <div class="row">
 
-        <x-admin.card-info title="المشتركين" bg="bg-gradient-primary" icon="account-multiple" value="25">
-            25% الملتحقين هذا الاسبوع
-        </x-admin.card-info>
+        <x-admin.card-info title="المشتركين" bg="bg-gradient-primary" icon="account-multiple" :value="$subscribers" />
 
-        <x-admin.card-info title="الوظائف" bg="bg-gradient-info" icon="briefcase-check" value="156">
-             <b class="fs-4">10</b> وظائف الاسبوع
-        </x-admin.card-info>
+        <x-admin.card-info title="الوظائف" bg="bg-gradient-info" icon="briefcase-check" :value="$jobs" />
 
-        <x-admin.card-info title="طلبات خدمة السيرة" bg="bg-gradient-danger" icon="briefcase-check" value="156">
-            30% من الطلبات هذاالاسبوع
-        </x-admin.card-info>
+        <x-admin.card-info title="طلبات خدمة السيرة" bg="bg-gradient-danger" icon="briefcase-check" value="156" />
 
-        <x-admin.card-info title="المشاهدات" bg="bg-gradient-success" icon="eye" value="156">
-             عدد الزيارات هذا الاسبوع 200
-        </x-admin.card-info>
+        <x-admin.card-info title="المشاهدات" bg="bg-gradient-success" icon="eye" :value="$allViews" />
 
-        <x-admin.card-info title="الدول" bg="bg-gradient-success" icon="mdi-city" :value="$countries">
+        <x-admin.card-info title="الدول - المدن" bg="bg-gradient-dark" icon="map-marker-multiple" value="{{$countries}} - {{ $cities }}" />
 
-        </x-admin.card-info>
 
         <x-admin.table title="الوظائف الاكثر مشاهدة" icon="folder-plus" :columns="['image', 'العنوان']">
             @forelse($popularJobs as $job)
                 <tr>
-                    <td> {{ $job->image }} </td>
+                    <td> <img src="{{ asset('storage/images/jobs/'.$job->image) }}" alt="صورة الوظيفة" srcset="{{ asset('storage/images/jobs/'.$job->image) }}"> </td>
                     <td> {{ $job->name }} </td>
                     <td> {{ $job->created_at->diffForHumans() }} </td>
                 </tr>
@@ -40,9 +31,9 @@
         </x-admin.table>
 
         <x-admin.table title="الوظائف المضافة حديثا" icon="folder-plus" :columns="['image', 'العنوان']">
-            @forelse($popularJobs as $job)
+            @forelse($latestJobs as $job)
                 <tr>
-                    <td> {{ $job->image }} </td>
+                    <td> <img src="{{ asset('storage/images/jobs/'.$job->image) }}" alt="صورة الوظيفة" srcset="{{ asset('storage/images/jobs/'.$job->image) }}"> </td>
                     <td> {{ $job->name }} </td>
                     <td> {{ $job->created_at->diffForHumans() }} </td>
                 </tr>
@@ -65,11 +56,22 @@
 
     @push('scripts')
         <script>
+
+            const viewers = {{ Illuminate\Support\Js::from($jobViewers) }};
+
+            const date = viewers.map(item => item.date);
+
+            const views = viewers.map(item => item.views);
+
+            // console.log(date);
+
+            console.log(viewers);
+
             var data = {
-                labels: ["2013", "2014", "2014", "2015", "2016", "2017"],
+                labels: date,
                 datasets: [{
                 label: 'الزيارات',
-                data: [10, 19, 3, 5, 2, 3],
+                data: views,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

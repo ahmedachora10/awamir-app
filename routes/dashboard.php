@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\PageController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,15 @@ Route::middleware('auth')->group(function ()
 
             Route::resource('countries', CountryController::class);
 
+            Route::post('jobs/thumbnail/upload', [PostController::class, 'thumbnail'])
+            ->name('jobs.thumbnail');
+
+            Route::put('jobs/keywords/{job}', [PostController::class, 'addKeywords'])
+            ->name('posts.keyword');
+
+            Route::put('jobs/change-status', [PostController::class, 'changeStatus'])
+            ->name('posts.change.status');
+
             Route::resource('jobs', PostController::class);
 
             Route::resource('job-types', JobTypeController::class);
@@ -65,6 +75,9 @@ Route::middleware('auth')->group(function ()
                 Route::post('website/social-media', 'socialMedia')->name('website.social-media');
                 Route::post('website/social-media/buttons-color', 'socialMediaButtonColor')->name('website.social-media.buttons.color');
                 Route::post('website/job/buttons-color', 'jobButtonColor')->name('website.job.buttons.color');
+                Route::post('website/job/register/links', 'registerThroughAwamir')->name('website.job.awamir.links');
+                Route::post('website/contact', 'contact')->name('website.contact');
+                Route::post('website/pages', 'pages')->name('website.pages');
             });
 
         });

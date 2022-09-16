@@ -4,45 +4,24 @@
 
     <form action="{{ route('users.store') }}" method="POST">
         @csrf
-        {{-- <h4 class="card-title">{{ __('Add New User') }}</h4> --}}
-
-        <x-admin.sample-card>
-
-            <div class="d-flex flex-md-row flex-sm-column justify-content-between align-items-center phone-info">
-                <div class="form-group col-md-4 col-sm-12">
-                    {{-- <img src="https://cdn.jsdelivr.net/npm/svg-country-flags@1.2.10/png100px/ae.png" alt="" srcset=""> --}}
-                    <select class="form-control form-control-lg" name="country_code" id="country-code">
-                        @forelse ($country_codes as $country)
-                            <option value="{{ $country['dialCode'] }}">{{ $country['dialCode'] }} - {{ $country['name'] }}</option>
-                        @empty
-                            <option value="0">{{ __('No Country Code Loaded!') }}</option>
-                        @endforelse
-                    </select>
-                    <x-admin.error field="country_code" />
-                </div> <!-- End Country Code -->
-
-                <div class="form-group col-md-7 col-sm-12">
-                    <x-input id="phone" class="form-control-lg" type="tel" name="phone" :value="old('phone')" placeholder="{{ __('Phone') }}" autofocus required />
-                    <x-admin.error field="phone" />
-                </div> <!-- End Phone Number -->
-
-            </div>
-
-        </x-admin.sample-card> <!-- End First Part -->
-
         <x-admin.sample-card>
 
             <div class="row">
 
                 <div class="form-group col-md-6">
-                    <x-admin.input type="text" id="name" :value="old('name')" name="name" placeholder="(*) {{ __('Name') }}" required />
+                    <x-admin.input type="text" id="name" :value="old('name')" name="name" placeholder="(*) {{ __('Name') }}" autofocus="" required  />
                     <x-admin.error field="name" />
                 </div> <!-- End Name -->
 
                 <div class="form-group col-md-6">
-                    <x-admin.input type="email" :value="old('email')" name="email" id="email" placeholder="{{ __('Email') }}" />
-                    <x-admin.error field="email" />
-                </div> <!-- End Email -->
+                    <x-admin.input type="password" :value="old('password')" name="password" id="password" placeholder="{{ __('كلمة المرور') }}" />
+                    <x-admin.error field="password" />
+                </div> <!-- End password -->
+
+                <div class="form-group col-md-12">
+                    <x-admin.input type="password" :value="old('password_confirmation')" name="password_confirmation" id="password_confirmation" placeholder="{{ __('تأكيد كلمة المرور') }}" />
+                    <x-admin.error field="password_confirmation" />
+                </div> <!-- End Password Confirmation -->
 
                 <hr>
                 <div class="form-group col-12">
@@ -57,58 +36,7 @@
                     <x-admin.error field="role" />
                 </div> <!-- End Role -->
 
-                <hr>
-                <div class="form-group col-md-6">
-                    <x-admin.input type="password" name="password" id="password" placeholder="(*) {{ __('Password') }}" required />
-                    <x-admin.error field="password" />
-                </div> <!-- End Password -->
-
-                <div class="form-group col-md-6">
-                    <x-admin.input type="password" class="form-control mb-3 mr-sm-2" name="password_confirmation" id="c_password" placeholder="(*) {{ __('Confirm Password') }}" required />
-                    <x-admin.error field="password_confirmation" />
-                </div> <!-- End Confirm Password -->
-            </div>
-
-        </x-admin.sample-card> <!-- End Middle Part -->
-
-        <x-admin.sample-card>
-
-            <h4 class="card-title mb-5">المراحل والمواد الدراسية</h4> <!-- End Title -->
-
-            <div class="form-group">
-                <div class="d-flex flex-wrap justify-content-center align-items-center">
-                    @forelse ($levels as $level)
-                    <div class="me-4 fw-bold">
-                        <x-admin.check-box :title="$level->name" name="levels[]" cls="info" :value="$level->id" />
-                    </div>
-                    @empty
-                    @endforelse
-                </div>
-                <x-admin.error field="levels" />
-            </div> <!-- End Levels -->
-
-            <hr>
-
-            <div class="form-group" id="subjects">
-                <div class="d-flex justify-content-center align-items-center flex-wrap">
-                    @forelse ($subjects as $subject)
-                        <div class="me-4 fw-bold">
-                            <x-admin.check-box :title="$subject->name" name="subjects[]" cls="info" :value="$subject->id" />
-                        </div>
-                    @empty
-                    @endforelse
-                </div>
-                <x-admin.error field="subjects" />
-            </div> <!-- End Subjects -->
-
-        </x-admin.sample-card> <!-- End Last Part -->
-
-        <x-admin.sample-card>
-            <div class="form-group">
-                <x-admin.input type="number" name="discount" id="discount" :value="old('discount')" placeholder="(*) {{ __('Discount') }}" />
-                <x-admin.error field="discount" />
-            </div>
-            <x-admin.button type="submit" class="btn-gradient-primary float-end mt-4">{{ __('Save') }}</x-admin.button>
+                <x-admin.button type="submit" class="btn-gradient-primary col-3 float-end mt-4" style="width: 150px">{{ __('Save') }}</x-admin.button>
 
         </x-admin.sample-card>
 

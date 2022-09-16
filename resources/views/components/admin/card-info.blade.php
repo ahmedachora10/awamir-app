@@ -1,7 +1,7 @@
 @if($value !== 0)
     <div class="col-md-4 stretch-card grid-margin">
         <div class="card {{ $bg }} card-img-holder text-white">
-            <div class="card-body">
+            <div class="card-body p-3">
                 <img src="{{ asset('images/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image">
                 <h4 class="font-weight-normal mb-3">{{ __($title) }} <i class="mdi mdi-{{ $icon }} mdi-24px float-right"></i>
                 </h4>

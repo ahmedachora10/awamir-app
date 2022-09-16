@@ -1,0 +1,90 @@
+
+/*
+center div hor and ver
+ position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+*/
+body {background-color: rgba(192, 192, 192, 0.1);}
+.main {width: 100%; padding-top:135px ; }
+.main form { max-width: 600px;}
+.search {width: 100%;border-radius: 10px;background-color: white;display: inline-flex;border: 1pt solid rgba(192, 192, 192, 0.6)
+}
+.search:active , .search:hover {box-shadow: 0 0 0 4px var(--roy-opt);border: 1pt solid var(--roy);}
+.main form input {border: 0 ;padding: 15px 20px;background-color: transparent;width: 84%;}
+.main form button {width: 15%;border: 0;background-color: transparent;}
+.main button:hover ,.main button:focus {color: var(--roy);}
+
+.dropsearch {position: absolute;width: 100%;background-color: white;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;display: none;z-index: 15;margin-top: -10px;
+}
+.search-q {font-size: 15px;padding: 8px 5px;text-align: right;margin: 2px 0;color: var(--color-text) !important;cursor: pointer;}
+.search-q i {font-size: 12px;margin-left: 5px;}
+.search-q:hover {background-color: rgba(0, 0, 0, 0.05);}
+
+.dropsearch-bot {padding:  20px 10px;border-top: 1px solid rgba(192, 192, 192, 0.3);margin-top: 10px;}
+.search-c {padding: 15px 20px;margin: 4px;background-color:rgba(0, 0, 0, 0.05) ;cursor: pointer;
+    color: var(--color-text) !important;border-radius: 10px;max-width: 200px;display: inline-block;}
+.search-c:hover {background-color:  rgba(0, 0, 0, 0.1)}
+
+/*add*/
+.hbtns {
+    width: 100%;border-radius: 10px;background-color: white;margin:10px 0 ;
+}
+.hbtns span {color: red;font-size: 17px;}
+.hbtns .hbtn {padding: 12px 20px;border-radius: 10px;margin: 4px;border: 0;color: white;width: 80%;
+max-width: 250px;
+}
+.hbtns .hbtn:hover {color: white !important;box-shadow: 0 0 0 3px var(--roy-opt);}
+
+
+/*start main2*/
+.main2 {padding: 50px 0;min-height: 60vh;color: var(--color-text);padding-bottom: 0;}
+h2 {font-size: 24px;color: var(--color-text);margin: 10px 0;}
+.cat {width: 40%;max-width: 300px;padding: 15px 20px;border-radius: 10px;display: inline-block;cursor: pointer;
+    margin-top: 20px;}
+.cat .ico {width: 35px;height: 35px;font-size: 13px;line-height: 35px;border-radius: 100%;margin-left: 3px;display: inline-table;}
+.cat-act {background-color: white ;border-bottom-left-radius: 0;border-bottom-right-radius: 0;}
+.cat-act .ico {background-color: var(--roy-opt);color: var(--roy);}
+
+
+.imp-job , .new-job {width: 100%;padding-bottom: 20px;background-color: white;min-height: 65vh;}
+.imp-job {display: none;}
+.more {padding: 8px 20px;border-radius: 20px;background-color: var(--roy-light);color: white;margin: 5px 0;border: 0;}
+.more:hover {background-color: var(--roy-hov);}
+
+/*start main3*/
+.main3 {padding: 50px 5px;color: var(--color-text); background-color: white;}
+.categorie  {padding: 15px 20px;margin: 4px;background-color:white ;cursor: pointer;font-size: 18px;
+    color: var(--color-text) !important;border-radius: 10px;max-width: 220px;display: inline-block;width: 95%;
+    border: 1px solid rgba(192, 192, 192, 0.5);box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.categorie:hover {box-shadow: 0 0 0 4px var(--roy);}
+
+/* start main4 */
+.main4 {width: 100%;padding: 50px 0;background-color: white;color: var(--color-text);}
+.side1 , .side2 {width: 45%;display: inline-table;}
+.side2 h3 {font-size: 30px;margin: 10px 0 ;}
+.side2 p {font-size: 15px;}
+.side2 button {padding: 10px 20px;border-radius: 10px;background-color: var(--roy);color: white;border: 0;margin: 5px 0;}
+.side2 button:hover , .side2 button:focus {background-color: var(--roy-hov);transform: translateY(2px);}
+.side1 img {width: 80%;max-width: 500px;}
+
+@media only screen and (max-width: 800px ) {
+.side1 , .side2 {width: 100%;display: inline-table;}
+}
+@media only screen and (max-width: 500px ) {
+.cat {padding: 10px ;width: 44%;}
+.main2 {padding: 0;padding-top: 10px;}
+.imp-job , .new-job {width: 100%;}
+
+}
+
+
+
+
+
+
+

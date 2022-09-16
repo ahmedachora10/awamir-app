@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -28,7 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.users.create');
+        $roles = Role::all();
+        return view('pages.admin.users.create', compact('roles'));
     }
 
     /**
@@ -39,20 +42,11 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        User::create($request->validated());
+        $user = User::create($request->validated());
+
+        $user->attachRole($request->input('role'));
 
         return redirect()->route(('users.index'))->with('success', 'تم اضافة المستخدم بنجاح');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
     }
 
     /**
@@ -63,7 +57,13 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('pages.admin.users.edit', compact('user'));
+        $user = $user->load('roles');
+
+        $roles = Role::all();
+
+        $userRole = $user->roles->first();
+
+        return view('pages.admin.users.edit', compact('user', 'roles', 'userRole'));
     }
 
     /**
@@ -78,9 +78,14 @@ class UserController extends Controller
         $request->validated();
 
         $user->name = $request->input('name');
-        $user->password = $request->input('password');
+
+        if(!is_null($request->input('password'))) {
+            $user->password = Hash::make($request->input('password'));
+        }
 
         $user->save();
+
+        $user->syncRoles([$request->input('role')]);
 
         return redirect()->route(('users.index'))->with('success', 'تم تحديث المستخدم بنجاح');
     }

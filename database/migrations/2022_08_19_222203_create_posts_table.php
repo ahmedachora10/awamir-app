@@ -25,15 +25,20 @@ return new class extends Migration
             $table->string('slug');
             $table->longText('description');
             $table->string('image');
-            $table->string('submission'); // submission path
 
             $table->string('company');
             $table->integer('views')->default(0);
-            $table->string('source'); // Job Source URL
-            $table->tinyInteger('status')->default(1);
+
+            $table->string('submission')->nullable(); // submission path
+            $table->string('source')->nullable(); // Job Source URL
+            $table->string('cv')->nullable();
+            $table->string('register_through_awamir')->nullable();
+            $table->string('whatsapp')->nullable();
+
             $table->string('url')->nullable();
-            $table->text('keywords');
-            $table->string('tls');
+            $table->tinyInteger('status')->default(1);
+            $table->text('keywords')->nullable();
+            $table->string('tls')->nullable();
 
             $table->timestamps();
         });

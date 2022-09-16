@@ -13,8 +13,8 @@
 
 
             <div class="col-md-6 form-group">
-                <x-admin.input type="text" id="title" name="title" :value="old('title')" placeholder="{{ __('العنوان') }}" />
-                <x-admin.error field="title" />
+                <x-admin.input type="text" id="name" name="name" :value="old('name')" placeholder="{{ __('العنوان') }}" />
+                <x-admin.error field="name" />
             </div>
 
             <div class="col-md-6 form-group">
@@ -78,8 +78,8 @@
             </div>
 
             <div class="col-md-6 form-group">
-                <x-admin.input type="text" id="apply" name="apply" :value="old('apply')" placeholder="{{ __('رابط التقديم') }}" />
-                <x-admin.error field="apply" />
+                <x-admin.input type="text" id="submission" name="submission" :value="old('submission')" placeholder="{{ __('رابط التقديم') }}" />
+                <x-admin.error field="submission" />
             </div>
 
             <div class="col-md-6 form-group">
@@ -90,6 +90,9 @@
             <div class="col-md-6 form-group">
                 <x-admin.select-input name="register_through_awamir" id="register_through_awamir">
                     <option> التسجيل عبر أوامر </option>
+                    @foreach (json_decode(settings('register_through_awamir')) as $link)
+                        <option value="{{ $link }}">{{ $link }}</option>
+                    @endforeach
 
                 </x-admin.select-input>
                 <x-admin.error field="register_through_awamir" />
@@ -156,12 +159,12 @@
 
             const my_file_bond = filePond(image,{
                 required:true,
-                labelIdle: ' سحب وافلات صورة او شعار الشركة <span class="filepond--label-action text-primary"> تصفح </span>',
+                labelIdle: ' سحب وافلات صورة   <span class="filepond--label-action text-primary"> تصفح </span>',
                 labelFileLoadError: 'الصيغ المدعومة هي jpg,jpeg,svg,webp,png',
                 labelInvalidField: 'الصيغ المدعومة هي jpg,jpeg,svg,webp,png',
             });
 
-            // my_file_bond.setOptions('route("admin.subjects.store_image")');
+            my_file_bond.setOptions('{{route("jobs.thumbnail")}}');
 
 
         </script>

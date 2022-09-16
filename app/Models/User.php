@@ -47,6 +47,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $attributes = [
+        'email' => ''
+    ];
+
     public function avatar(): Attribute
     {
         return Attribute::make(

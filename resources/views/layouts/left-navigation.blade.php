@@ -5,10 +5,10 @@
         <x-admin.medium-card-user />
             @role('admin')
                 <x-admin.link title="للوحة تحكم" icon="home" route="dashboard" />
-                <x-admin.link title="المستخدمين" icon="account" route="users.index" />
+                <x-admin.link title="المستخدمين" icon="account-multiple" route="users.index" />
                 {{-- <x-admin.link title="أنواع الوظائف" icon="format-list-bulleted" route="categories.index" /> --}}
-                <x-admin.link title="المدن" icon="lan" route="cities.index" />
-                <x-admin.link title="الدول" icon="lan" route="countries.index" />
+                <x-admin.link title="الدول" icon="map-marker-multiple" route="countries.index" />
+                <x-admin.link title="المدن" icon="city" route="cities.index" />
                 <x-admin.link title="المشتركين" icon="account-multiple-plus" route="subscribers.index" />
             @endrole
 
@@ -28,7 +28,7 @@
 
 
             @role('admin')
-                <x-admin.link title="الاعلانات" icon="settings-box" route="ads.index" />
+                <x-admin.link title="الاعلانات" icon="bell-ring" route="ads.index" />
                 <x-admin.link title="الاعدادات" icon="settings-box" route="settings.index" />
             @endrole
 

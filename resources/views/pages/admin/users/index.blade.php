@@ -18,7 +18,7 @@
                 <td>
                     @if($user->roles->count() > 0)
                         <label class="badge fw-bold badge-gradient-{{ $user->roles->first()->name == 'admin' ? 'danger' : ($user->roles->first()->name == 'writer' ? 'info' : 'primary') }}">
-                            {{ __(strtoupper($user->roles->first()->name)) }}
+                            {{ __(ucfirst($user->roles->first()->display_name)) }}
                         </label>
                     @endif
                 </td>

@@ -6,15 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ settings('site_name') ?? config('app.name', 'Laravel') }}</title>
 
     {{-- Favicon --}}
-    <link rel="shortcut icon" href="{{ asset('images/logo.svg') }}" />
-    <link rel="icon" href="{{ asset('images/logo.svg') }}" sizes="32x32">
-    <link rel="icon" href="{{ asset('images/logo.svg') }}" sizes="192x192">
-
-    <link rel="apple-touch-icon" href="{{ asset('images/logo.svg') }}">
-    <meta name="msapplication-TileImage" content="{{ asset('images/logo.svg') }}">
+    <x-site-icon />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,7 +61,7 @@
             @include('layouts.left-navigation')
 
             <div class="main-panel">
-                <div class="content-wrapper">
+                <div class="content-wrapper" dir="rtl">
                     <x-admin.message />
                     {{ $slot }}
                 </div>

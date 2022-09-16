@@ -68,6 +68,11 @@ class AdController extends Controller
 
         $ad->name = $request->input('name');
         $ad->content = $request->input('content');
+        if($request->exists('status')) {
+            $ad->status = $request->input('status');
+        } else {
+            $ad->status = 1;
+        }
 
         $ad->save();
 

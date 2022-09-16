@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Validator;
 
 class SettingController extends Controller
 {
-
     use UploadFile;
 
     /**
@@ -23,13 +22,7 @@ class SettingController extends Controller
      */
     public function index()
     {
-
-        $content = function ($name) {
-            $settings = Config::get('settings');
-            return $settings->where('name',$name)->count() > 0 ? $settings->where('name',$name)->first()->content : null;
-        };
-
-        return view('pages.admin.settings.settings', compact("content"));
+        return view('pages.admin.settings.settings');
     }
 
 
@@ -106,11 +99,33 @@ class SettingController extends Controller
         return $this->updateSettings($request);
     }
 
+    public function contact(Request $request)
+    {
+        return $this->updateSettings($request);
+    }
+
+    public function pages(Request $request)
+    {
+        return $this->updateSettings($request);
+    }
+
+    public function registerThroughAwamir(Request $request)
+    {
+        $data = $request->get('register_through_awamir');
+
+        $setting = Setting::where('name', '=', 'register_through_awamir')->first();
+
+        if($setting != null) {
+            $setting->content = json_encode($data);
+            $setting->save();
+        }
+
+        return redirect()->route('settings.index')->with("success", 'تم تحديث الاعدادات بنجاح');
+    }
+
     private function updateSettings(Request $request)
     {
         $data = $request->except('_token');
-
-        // $builder = Setting::query();
 
         foreach ($data as $key => $value) {
             $setting = Setting::where('name', '=', $key)->first();

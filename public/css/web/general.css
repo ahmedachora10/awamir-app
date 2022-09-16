@@ -1,0 +1,162 @@
+*{padding: 0;margin: 0;font-family: 'Tajawal', sans-serif;direction: rtl;transition-duration: 0.2s;}
+
+a {text-decoration: none;color: var(--color-text);}
+input:focus , textarea:focus , button:focus{outline: none;}
+
+
+
+/*not used all saved on database*/
+/*
+:root {
+  --color-text : rgb(60, 63, 78) ;
+  --roy : rgb(94, 194, 144) ;
+  --roy-opt : rgba(94, 194, 144, 0.3) ;
+  --roy-opt2 : rgba(69, 148, 124, 0.4);
+  --roy-hov : rgb(42, 172, 128)  ;
+  --roy-light : rgb(81, 126, 111);
+}
+*/
+
+.hbtns {
+    width: 522px;
+    border-radius: 10px;
+    background-color: white;
+    margin: 10px auto;
+    text-align: center;
+}
+
+@media (max-width: 521px)
+{
+    .hbtns {
+        width: 96%;
+    }
+}
+
+/*start menu*/
+.menu {width:100% ;padding:10px 200px;background-color: white ; border-bottom:1px solid rgba(192, 192, 192, 0.3);}
+.menu  .logo img{height:50px}
+.menu .date {display: inline-table; width:50%;max-width: 250px;background-color: var(--roy-light);
+  padding: 5px 10px;border-radius: 10px ;}
+.sm-menu-ico {width: 40px;font-size: 18px;display: none !important;margin-right: 3px;}
+.sm-menu-ico i {cursor: pointer;color:var(--color-text) !important}
+.sm-menu {position: fixed;width: 100%;height: 100vh;background-color: white;
+z-index: 99;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+display: none;padding-top: 60px;
+}
+.sm-menu .list {max-height: 90vh;overflow-y: auto;padding: 10px 5px;}
+.sm-menu .list div {margin: 5px 0;font-size: 18px;padding: 15px 10px;border-radius: 10px;}
+.sm-menu .list div:hover {background-color: rgba(0, 0, 0, 0.05);color: var(--color-text) !important;}
+
+.sm-menu .sm-menu-bot {position: fixed;width: 100%;bottom: 7px;}
+.sm-menu-bot div {width: 15%;font-size: 16px;display: inline-flex;text-align: center !important;}
+
+.menu .date .ico {max-width: 60px;display: inline-table;width:25%}
+.menu .ico img {width: 45px;height: 45px;}
+.menu .date .date-show {display: inline-table;max-width: 170px; width: 70%;float:left ;text-align: center;
+  color: white ;}
+
+.f-menu {position: fixed !important;top: 0 !important;left: 0 !important;right: 0 !important; z-index: 998;}
+.smenu {width: 100%;background-color: var(--roy-light);
+  display: inline-table;padding:15px 200px;color: white;position: relative;}
+.smenu a {color: white !important;}
+.smenu span {margin-left: 20px;padding: 0;font-size: 18px;padding: 10px 15px;border-radius: 5px;}
+.smenu .span:hover {background-color: rgba(255, 255, 255, 0.2);}
+.smenu .span:last-child{margin: 0;}
+.smenu .social a {margin-left:10px  ;font-size: 20px;}
+.smenu .social div {width: 45px;height: 45px;line-height: 45px;border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.2);text-align: center !important;display: inline-table;}
+.smenu .social2 div {width: 25px;text-align: center !important;display: inline-table;color: var(--color-text);
+font-size: 14px;padding: 0;border-radius: 10px;
+}
+.social2 {display: none;}
+.ex-menu div:hover {background-color: rgba(0, 0, 0, 0.05);color: var(--color-text) !important;}
+.smenu .social div:hover {background-color: rgba(255, 255, 255, 0.4);}
+.ex-menu-ico  {cursor: pointer;float: left;}
+.ex-menu-ico:focus , .ex-menu-ico:hover{background-color: rgba(255, 255, 255, 0.4);}
+.ex-menu {position: absolute;width: 100%;max-width: 200px;padding: 5px 0px;border-radius: 5px;background-color: white;
+text-align: right;left: 60px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+display: none;z-index: 15;
+}
+.ex-menu div {color: var(--color-text) !important;margin: 2px 0 ;font-size: 17px;padding: 10px 15px;}
+
+
+/*jobs tab*/
+
+.jobtab {width: 95%;max-width: 500px;background-color: white;border-radius: 10px;display: inline-table;
+  margin: 20px ;border: 1px solid rgba(192, 192, 192, 0.5);box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+
+.jobtab .sec1 , .jobtab .sec2 {display: inline-table;}
+.jobtab .sec1 {width: 25%;padding: 5px;position: relative;}
+.con {position: absolute;top: 50%;-webkit-transform: translate(-50%, auto);transform: translate(-50%, auto);}
+.jobtab .sec1 img {width: 50px;border-radius: 100%;height: 50px;margin-bottom: 8px;border: 2pt solid var(--roy);
+  object-fit: cover;
+  }
+.jobtab .company {font-size: 15px;text-align: right;color: var(--roy);}
+.jobtab .sec2 {width: 72%;padding: 5px 8px;}
+.jobtab h3 {font-size: 18px;color: royalblue;text-align: right !important;}
+.jobtab p {font-size: 14px;margin: 6px 0;text-align: right !important;color: var(--color-text);}
+
+.jobtab:hover {box-shadow: 0 0 0 2px var(--roy);}
+.jobtab:hover .tlb {background-color: var(--roy);color: white;}
+
+.tlb {width: 30%;padding: 7px 5px;font-size: 12px;color: var(--roy);color: var(--roy);border: 1px solid var(--roy);
+  display: inline-table;border-radius: 20px;margin: 5px 1px ;
+}
+
+/*footer*/
+
+
+.footer { padding:40px 0; background-color:#ffffff; color:#4b4c4d;border-top: 1px solid rgba(192, 192, 192, 0.3);clear:both}
+.footer ul {padding:0;list-style:none;text-align:center;font-size:18px;line-height:1.6;margin-bottom:0;}
+.footer li {padding:0 10px;margin: 10px 0;}
+.footer ul a {color:inherit;text-decoration:none;opacity:0.8;}
+.footer ul a:hover {opacity:1;}
+.footer .social {text-align:center;padding-bottom:25px;}
+.footer .social > a {font-size:24px;width:40px;height:40px;line-height:40px;display:inline-block;text-align:center;
+  border-radius:50%;border:1px solid #ccc;margin: 8px;color:inherit;opacity:0.75;}
+.footer .social > a:hover {opacity:1;}
+.footer .copyright {margin-top:15px;text-align:center;font-size:13px;color:#aaa;margin-bottom:0;}
+
+
+/*alert  divs*/
+.alert {width: 95%;padding: 15px 20px;border-radius: 10px; border: 1px solid rgba(192, 192, 192, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;color: white;position: fixed;right: 20px;bottom: 20px;display: none;
+z-index: 99999999;font-size: 16px;max-width: 300px;
+}
+.suc-alr {background-color: var(--roy);}
+.err-alr {background-color: rgb(255, 76, 70);}
+
+@media only screen and (max-width: 1400px ) {
+ .menu , .smenu {padding: 10px 100px;}
+ .smenu span {margin-left: 10px;font-size: 17px;padding: 5px 10px;}
+ .smenu .social a {margin-left:5px  ;font-size: 18px;}
+.smenu .social div {width: 40px;height: 40px;line-height: 40px;}
+}
+@media only screen and (max-width: 1000px ) {
+  .smenu .social {display: none;}
+  .smenu .social2  {display: block;}
+  .menu , .smenu {padding: 10px 90px;}
+}
+@media only screen and (max-width: 700px ) {
+  .sdf1 , .sdf2 {width: 100%;}
+  .menu  {padding: 10px 10px;}
+  .smenu {display: none;}
+  .jobtab {margin: 20px 0;}
+  .menu .date {font-size: 14px;display: inline-flex !important;}
+  .sm-menu-ico {display: flex !important;margin-right: 13px;color: white;}
+}
+@media only screen and (max-width: 500px ) {
+  .menu {display: inline-table;position: fixed;top: 0;left: 0;z-index: 998;}
+  .menu .ico img  {width: 37px;height: 37px;}
+  .menu  {padding: 10px 2px;}
+  .logo img{height:45px !important ; margin-left: 7px;max-width:90% !important;}
+  .menu .date {padding: 5px 3px !important;font-size: 13px;margin-right: 2p}
+  .alert {right: 5px;bottom: 20px; }
+ .menu .date .ico {max-width: 60px;display: inline-table;width:15%}
+.menu .date .date-show {width: 83%;}
+.footer .social > a {line-height: 45px;font-size: 16px;}
+
+}
+@media only screen and (max-width: 420px ) {
+}

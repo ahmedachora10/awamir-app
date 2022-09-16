@@ -1,0 +1,87 @@
+body {background-color: rgba(192, 192, 192, 0.03);}
+.page {width: 60%;background-color: white;padding: 60px 10px;
+    color: var(--color-text);min-height: 80vh;text-align: right;
+    border: 1px solid rgba(192, 192, 192, 0.5);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;margin: 30px 0;border-radius: 10px;display: inline-table;
+}
+.page-side {width: 30%;float: left;padding: 60px 0;padding-left: 20px;margin: 30px 0;display: inline-table;}
+.page p {font-size: 18px;padding: 15px;text-align: right;line-height: 35px;}
+.page h3  {color: var(--roy);}
+.page h2 {font-size: 30px !important;margin: 15px 0;text-align: center;}
+.page h3 {font-size: 23px !important;margin: 10px 0;}
+.page h4 {font-size: 20px !important;margin: 5px 0;}
+
+.ot-page {width: 95%;padding: 10px 0;background-color: white;
+    color: var(--color-text);text-align: right;border-radius: 10px;
+    border: 1px solid rgba(192, 192, 192, 0.5);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;}
+.ot {padding: 15px 10px;font-size: 18px;}
+.ot:hover {background-color: var(--roy-opt);color: var(--roy);}
+
+
+
+
+.sdd2 {float: left;}
+.side {width: 45%;display: inline-table;padding: 100px 0;}
+.side img {width: 80%;max-width: 650px;margin-top: 20px ;}
+.side h2 {font-size: 25px;}
+.side h3 {font-size: 20px;margin: 10px 0;}
+.side form {width: 95%;max-width: 550px;background-color: white;padding: 15px ;border-radius: 10px;
+    border: 1px solid rgba(192, 192, 192, 0.5);position: relative;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.contact {width: 100%;position: relative;color: var(--roy);min-height: 100vh;}
+input , .place {padding: 15px 20px;border: 1px solid silver ; border-radius: 10px;margin: 10px 0;width: 100%;}
+input:focus , .place:focus {border: 1px solid var(--roy); box-shadow: 0 0 0 3px var(--roy-opt);}
+.hal-inp {width: 49%;}
+.inp {width: 100%;}
+.place {height: 250px;}
+.sub {margin: 10px 0;padding: 15px 20px;background-color: var(--roy);color: white;border: 0;border-radius: 10px;
+width: 100%;
+}
+.sub:hover {background-color: var(--roy-hov);}
+
+/*resume service page*/
+.select {padding: 15px 20px;border: 1px solid silver;border-radius: 10px;margin: 10px 0;width: 100%;
+    text-align: right; cursor: pointer;}
+.select i {float: left;}
+.sel-act {border: 1px solid var(--roy);box-shadow: 0 0 0 3px var(--roy-opt);color: var(--roy);}
+.options {position: absolute;width: 100%;padding: 10px 0;background-color: white;text-align: right;
+    border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;margin-top: -12px;display: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;}
+.option {padding: 10px;color: var(--color-text);cursor: pointer;z-index: 99;}
+.option:hover {background-color: rgba(0, 0, 0, 0.03);}
+
+
+@media only screen and (max-width: 800px ) {
+    .side {width: 100%;padding: 30px 0;padding-top: 80px;}
+    .sdd2 {float: none;}
+    .page {padding: 100px  10px;width: 100%;}
+    .page-side , .page-side{padding: 30px 0; width: 100%;}
+}
+@media only screen and (max-width: 750px ) {
+.page {padding: 100px  10px;width: 100%;}
+.page p {font-size: 17px;padding: 15px;line-height: 33px;}
+.page h2 {font-size: 28px;margin: 15px 0;text-align: center;}
+.page h3 {font-size: 22px;margin: 10px 0;}
+.page h4 {font-size: 19px;margin: 5px 0;}
+    
+}
+
+@media only screen and (max-width: 500px ) {
+.page {padding: 80px  8px;}
+.page p {font-size: 16px;padding: 10px 4px;line-height: 33px;}
+.page h2 {font-size: 25px;margin: 15px 0;text-align: center;}
+.page h3 {font-size: 20px;margin: 10px 0;}
+.page h4 {font-size: 18px;margin: 5px 0;}
+        
+}
+
+
+
+
+
+
+
+
+

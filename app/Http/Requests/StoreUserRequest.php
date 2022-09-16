@@ -28,6 +28,7 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => ['required', new Text],
             'password' => ['required', 'confirmed', Password::defaults()],
+            'role' => ['required', 'exists:roles,id']
         ];
     }
 }

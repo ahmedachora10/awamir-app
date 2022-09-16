@@ -4,6 +4,6 @@ namespace App\Http\Helpers;
 
 
 enum PostStatus:int {
-    case PUBLISH = 1;
-    case DRAFT = 2;
+    case PUBLISH = 2;
+    case DRAFT = 1;
 }

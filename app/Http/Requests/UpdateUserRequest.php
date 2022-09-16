@@ -27,7 +27,8 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => ['required', new Text],
-            'password' => ['required', 'confirmed', Password::defaults()],
+            // 'password' => ['sometimes','required', 'confirmed', Password::defaults()],
+            'role' => ['required', 'exists:roles,id']
         ];
     }
 }

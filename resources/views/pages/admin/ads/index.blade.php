@@ -2,10 +2,19 @@
 
     <x-admin.headline title="الاعلانات" icon="folder-google-drive"/>
 
-    <x-admin.table title="جميع الاعلانات" icon="folder-plus" :route="route('ads.create')"  :columns="['name', 'actions']">
+    <x-admin.table title="جميع الاعلانات" icon="folder-plus" :route="route('ads.create')"  :columns="['name', 'الحالة', 'actions']">
         @forelse($ads as $ad)
             <tr>
                 <td> {{ $ad->name }} </td>
+                <td>
+                    <label class="badge fw-bold badge-gradient-{{$ad->status == '1' ? 'danger' : 'info' }}">
+                        @if($ad->status == '1')
+                        مخفي
+                        @else
+                        يظهر
+                        @endif
+                    </label>
+                </td>
                 <td>
                     <div class="d-flex align-items-center">
                         <a href="{{ route('ads.edit', $ad->id) }}" style="font-size: 1.2rem" class="mdi mdi-table-edit text-success me-2"></a>

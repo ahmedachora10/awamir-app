@@ -6,7 +6,7 @@
         @forelse($cities as $city)
             <tr>
                 <td> {{ $city->name }} </td>
-                <td> {{ $city->country->name }} </td>
+                <td> <label class="badge fw-bold badge-gradient-info"> {{ $city->country->name }} </label> </td>
                 <td>
                     <div class="d-flex align-items-center">
                         <a href="{{ route('cities.edit', $city->id) }}" style="font-size: 1.2rem" class="mdi mdi-table-edit text-success me-2"></a>
@@ -17,7 +17,7 @@
             </tr>
         @empty
             <tr>
-                <td>{{ __('No Cities') }}</td>
+                <td>{{ __('لا توجد مدن لعرضها') }}</td>
             </tr>
         @endforelse
 </x-admin.table>

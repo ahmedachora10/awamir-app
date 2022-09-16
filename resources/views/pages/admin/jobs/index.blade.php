@@ -1,23 +1,67 @@
 <x-app-layout>
 
+    @livewireStyles
+
     <x-admin.headline title="Jobs" icon="folder-google-drive"/>
 
-    <x-admin.table title="All Jobs" icon="folder-plus" :route="route('jobs.create')"  :columns="['name', 'actions']">
-        @forelse($jobs as $job)
-            <tr>
-                <td> {{ $job->name }} </td>
-                <td>
-                    <div class="d-flex align-items-center">
-                        <a href="{{ route('jobs.edit', $job->id) }}" style="font-size: 1.2rem" class="mdi mdi-table-edit text-success me-2"></a>
-                        {{-- <a href="" style="font-size: 1.2rem" class="mdi mdi-account-remove text-danger"></a> --}}
-                        <x-admin.delete-button :route="route('jobs.destroy', $job->id)" class="mdi mdi-delete text-danger" />
-                    </div>
-                </td>
-            </tr>
-        @empty
-            <tr>
-                <td>{{ __('لا توجد وظائف لعرضها') }}</td>
-            </tr>
-        @endforelse
-</x-admin.table>
+    @livewire('admin.jobs-container')
+
+    @push('styles')
+        <style>
+            .change-status label{ cursor: pointer; }
+        </style>
+    @endpush
+
+    @push('scripts')
+        <script src="{{ asset('js/helpers.js') }}"></script>
+
+        <script>
+            const changeStatusBtn = $('.change-status');
+
+            if(changeStatusBtn.length) {
+                changeStatusBtn.each(function() {
+                    $(this).click(function () {
+                        const jobId = $(this).attr('data-id');
+                        const lable = $(this).find('label');
+
+                        ajax({
+                            url: '{{ route('posts.change.status') }}',
+                            method: 'PUT',
+                            data: {
+                                job: jobId,
+                            }
+                        }).done(response =>  {
+
+                            if(response.errros) return false;
+
+                            const status = response.status;
+                            const styles = {
+                                1: {
+                                    class: 'badge badge-danger',
+                                    text: 'مسودة'
+                                },
+                                2: {
+                                    class: 'badge badge-info',
+                                    text: 'منشور'
+                                }
+
+                            };
+
+                            lable.removeClass();
+
+                            lable.addClass(styles[status].class);
+                            lable.text(styles[status].text);
+
+
+                        });
+                    })
+                });
+            }
+
+        </script>
+    @endpush
+
+
+    @livewireScripts
+
 </x-app-layout>
