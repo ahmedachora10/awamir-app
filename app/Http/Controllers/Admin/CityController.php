@@ -83,6 +83,8 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
+        $city->jobs()->delete();
+
         $city->delete();
 
         return redirect()->route('cities.index')->with('success', 'تم حذف العنصر بنجاح');

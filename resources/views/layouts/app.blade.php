@@ -23,7 +23,9 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/dashboard-style.css') }}">
 
-    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
+
+    {{-- @vite('resources/css/app.css') --}}
 
     <style>
         .form-control {font-size: 0.9125rem !important;}
@@ -88,7 +90,9 @@
     <script src="{{ asset('js/todolist.js') }}"></script>
     <!-- End custom js for this page -->
 
-    @vite('resources/js/app.js')
+    {{-- @vite('resources/js/app.js') --}}
+
+    <script src="{{ asset('build/assets/app.js') }}"></script>
 
     @stack('scripts')
     <!-- End Custom Scripts -->

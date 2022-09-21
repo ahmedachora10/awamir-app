@@ -90,6 +90,10 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
+        $country->jobs()->delete();
+
+        // $country->cities()->delete();
+
         $country->delete();
 
         return redirect()->route('countries.index')->with('success', 'تم حذف العنصر بنجاح');
