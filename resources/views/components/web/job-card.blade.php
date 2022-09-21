@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="sec2">
-            <h3>{{$job->name}} </h3>
+            <h3 class="ps-3">{{$job->name}} </h3>
             <div class="company">{{$job->company}}</div>
             <p>{{Str::limit(Str::replace('&nbsp;', ' ', strip_tags($job->description)), 65, ' ...');}}</p>
         </div>
