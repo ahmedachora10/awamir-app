@@ -4,7 +4,9 @@
         <div class="card-body">
             <h4 class="card-title mb-5"> ارسال آخر الوظائف </h4>
             <div class="col-10 mx-auto">
-                <div class="alert alert-success">{{ $message }}</div>
+                @if(!empty($message))
+                    <div class="alert alert-success">{{ $message }}</div>
+                @endif
             </div>
             <div class="d-flex justify-content-center align-items-center">
                 <div class="form-group col-8 mb-0">

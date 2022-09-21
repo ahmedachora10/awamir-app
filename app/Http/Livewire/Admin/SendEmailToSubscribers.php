@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Jobs\SendSubscribersEmailJob;
 use App\Mail\SendLatestJobs;
 use App\Models\Post;
 use App\Models\Subscriber;
@@ -19,9 +20,11 @@ class SendEmailToSubscribers extends Component
     public function sendEmail()
     {
         $latestJobs = Post::latest()->take($this->jobsCount)->get();
-        $subscribers = Subscriber::first();
 
-        Mail::to($subscribers)->send(new SendLatestJobs($latestJobs));
+        Subscriber::select('email')->chunk(20,function ($subscribers) use($latestJobs)
+        {
+            dispatch(new SendSubscribersEmailJob($subscribers, $latestJobs));
+        });
 
         $this->message = 'تم ارسال الايميل بنجاح';
 
