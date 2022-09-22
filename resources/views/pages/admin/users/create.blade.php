@@ -9,7 +9,7 @@
             <div class="row">
 
                 <div class="form-group col-md-6">
-                    <x-admin.input type="text" id="name" :value="old('name')" name="name" placeholder="(*) {{ __('Name') }}" autofocus="" required  />
+                    <x-admin.input type="text" id="name" :value="old('name')" name="name" placeholder="(*) البريد الالكتروني" autofocus="" required  />
                     <x-admin.error field="name" />
                 </div> <!-- End Name -->
 

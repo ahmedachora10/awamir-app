@@ -26,7 +26,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', new Text],
+            'name' => ['required', 'email'],
             // 'password' => ['sometimes','required', 'confirmed', Password::defaults()],
             'role' => ['required', 'exists:roles,id']
         ];
