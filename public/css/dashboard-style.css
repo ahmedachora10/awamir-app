@@ -14430,3 +14430,8 @@ dl {
 
 /*# sourceMappingURL=style.css.map */
 
+@media (max-width: 500px) {
+    .content-wrapper {
+        padding: 2.75rem .25rem !important;
+    }
+}
