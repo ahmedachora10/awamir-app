@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function ()
 {
 
-    Route::middleware('role:admin')->group(function ()
+    Route::middleware('role:admin|writer')->group(function ()
     {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

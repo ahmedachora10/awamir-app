@@ -3,7 +3,7 @@
     <ul class="nav">
 
         <x-admin.medium-card-user />
-            @role('admin')
+            @role('admin|writer')
                 <x-admin.link title="للوحة تحكم" icon="home" route="dashboard" />
                 <x-admin.link title="المستخدمين" icon="account-multiple" route="users.index" />
                 {{-- <x-admin.link title="أنواع الوظائف" icon="format-list-bulleted" route="categories.index" /> --}}
@@ -27,7 +27,7 @@
             @endrole
 
 
-            @role('admin')
+            @role('admin|writer')
                 <x-admin.link title="الاعلانات" icon="bell-ring" route="ads.index" />
                 <x-admin.link title="الاعدادات" icon="settings-box" route="settings.index" />
             @endrole
