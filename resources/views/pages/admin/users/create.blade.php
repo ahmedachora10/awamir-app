@@ -9,16 +9,21 @@
             <div class="row">
 
                 <div class="form-group col-md-6">
-                    <x-admin.input type="text" id="name" :value="old('name')" name="name" placeholder="(*) البريد الالكتروني" autofocus="" required  />
+                    <x-admin.input type="text" id="name" :value="old('name')" name="name" placeholder="(*)  الاسم" autofocus="" required  />
                     <x-admin.error field="name" />
                 </div> <!-- End Name -->
+
+                <div class="form-group col-md-6">
+                    <x-admin.input type="text" id="email" :value="old('email')" name="email" placeholder="(*) البريد الالكتروني" autofocus="" required  />
+                    <x-admin.error field="email" />
+                </div> <!-- End Email -->
 
                 <div class="form-group col-md-6">
                     <x-admin.input type="password" :value="old('password')" name="password" id="password" placeholder="{{ __('كلمة المرور') }}" />
                     <x-admin.error field="password" />
                 </div> <!-- End password -->
 
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <x-admin.input type="password" :value="old('password_confirmation')" name="password_confirmation" id="password_confirmation" placeholder="{{ __('تأكيد كلمة المرور') }}" />
                     <x-admin.error field="password_confirmation" />
                 </div> <!-- End Password Confirmation -->
