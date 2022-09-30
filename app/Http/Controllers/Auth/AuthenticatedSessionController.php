@@ -32,6 +32,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if(auth()->user()->hasRole('writer')) {
+            return redirect()->route('jobs.index');
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

@@ -14,7 +14,7 @@ class StoreCategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->user()->hasRole('admin');
+        return auth()->user()->hasRole('admin|writer');
     }
 
     /**

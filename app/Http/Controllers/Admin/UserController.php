@@ -84,7 +84,11 @@ class UserController extends Controller
         $request->validated();
 
         $user->name = $request->input('name');
-        $user->email = $request->input('email');
+
+        if(User::where('email', $request->input('email'))->count() == 0) {
+            $user->email = $request->input('email');
+        }
+
 
         if(!is_null($request->input('password'))) {
             $user->password = Hash::make($request->input('password'));

@@ -31,15 +31,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function ()
 {
 
-    Route::middleware('role:admin|writer')->group(function ()
+    Route::middleware('role:admin')->group(function ()
     {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::group(['prefix' => 'admin'], function ()
         {
+            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::resource('users', UserController::class);
-
-            Route::resource('categories', CategoryController::class);
 
             Route::resource('cities', CityController::class);
 
@@ -47,18 +45,18 @@ Route::middleware('auth')->group(function ()
 
             Route::resource('countries', CountryController::class);
 
-            Route::post('jobs/thumbnail/upload', [PostController::class, 'thumbnail'])
-            ->name('jobs.thumbnail');
+            // Route::post('jobs/thumbnail/upload', [PostController::class, 'thumbnail'])
+            // ->name('jobs.thumbnail');
 
-            Route::put('jobs/keywords/{job}', [PostController::class, 'addKeywords'])
-            ->name('posts.keyword');
+            // Route::put('jobs/keywords/{job}', [PostController::class, 'addKeywords'])
+            // ->name('posts.keyword');
 
-            Route::put('jobs/change-status', [PostController::class, 'changeStatus'])
-            ->name('posts.change.status');
+            // Route::put('jobs/change-status', [PostController::class, 'changeStatus'])
+            // ->name('posts.change.status');
 
-            Route::resource('jobs', PostController::class);
+            // Route::resource('jobs', PostController::class);
 
-            Route::resource('job-types', JobTypeController::class);
+            // Route::resource('job-types', JobTypeController::class);
 
             Route::resource('ads', AdController::class);
 
@@ -83,5 +81,34 @@ Route::middleware('auth')->group(function ()
         });
 
     });
+
+
+
+    Route::middleware('role:admin|writer')->group(function ()
+    {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::group(['prefix' => 'admin'], function ()
+        {
+
+            Route::resource('categories', CategoryController::class);
+
+            Route::post('jobs/thumbnail/upload', [PostController::class, 'thumbnail'])
+            ->name('jobs.thumbnail');
+
+            Route::put('jobs/keywords/{job}', [PostController::class, 'addKeywords'])
+            ->name('posts.keyword');
+
+            Route::put('jobs/change-status', [PostController::class, 'changeStatus'])
+            ->name('posts.change.status');
+
+            Route::resource('jobs', PostController::class);
+
+            Route::resource('job-types', JobTypeController::class);
+
+        });
+
+    });
+
 
 });
