@@ -19,7 +19,7 @@
         <x-admin.table title="الوظائف الاكثر مشاهدة" icon="folder-plus" :columns="['image', 'العنوان']">
             @forelse($popularJobs as $job)
                 <tr>
-                    <td> <img src="{{ asset('storage/images/jobs/'.$job->image) }}" alt="صورة الوظيفة" srcset="{{ asset('storage/images/jobs/'.$job->image) }}"> </td>
+                    <td> <img src="{{ storage_path('public/images/jobs/'.$job->image) }}" alt="صورة الوظيفة" srcset="{{ asset('storage/images/jobs/'.$job->image) }}"> </td>
                     <td> {{ $job->name }} </td>
                     <td> {{ $job->created_at->diffForHumans() }} </td>
                 </tr>
@@ -33,7 +33,7 @@
         <x-admin.table title="الوظائف المضافة حديثا" icon="folder-plus" :columns="['image', 'العنوان']">
             @forelse($latestJobs as $job)
                 <tr>
-                    <td> <img src="{{ asset('storage/images/jobs/'.$job->image) }}" alt="صورة الوظيفة" srcset="{{ asset('storage/images/jobs/'.$job->image) }}"> </td>
+                    <td> <img src="{{ storage_path('public/images/jobs/'.$job->image) }}" alt="صورة الوظيفة" srcset="{{ asset('storage/images/jobs/'.$job->image) }}"> </td>
                     <td> {{ $job->name }} </td>
                     <td> {{ $job->created_at->diffForHumans() }} </td>
                 </tr>
