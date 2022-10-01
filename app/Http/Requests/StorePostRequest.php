@@ -26,13 +26,13 @@ class StorePostRequest extends FormRequest
     {
         return [
             'image' => ['required', 'ends_with:jpg,jpeg,png,svg,webp'],
-            'name' => ['required', new Text],
+            'name' => ['required'],
             'company' => ['required', 'string'],
             'country_id' => ['required', 'integer', 'exists:countries,id'],
             'city_id' => ['required', 'integer', 'exists:cities,id'],
             'category_id' => ['required', 'integer', 'exists:categories,id'],
             'jobtype_id' => ['required', 'integer', 'exists:job_types,id'],
-            'description' => ['required', 'string'],
+            'description' => ['required'],
             'source' => ['nullable'],
             'submission' => ['nullable'],
             'cv' => ['nullable'],
