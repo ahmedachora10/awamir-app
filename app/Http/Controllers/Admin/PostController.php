@@ -38,7 +38,6 @@ class PostController extends Controller
      */
     public function create()
     {
-
         $countries = Country::all(['id', 'name']);
 
         $categories = Category::all();

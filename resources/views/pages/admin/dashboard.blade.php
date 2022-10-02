@@ -5,23 +5,26 @@
     <!-- Cards Info -->
     <div class="row">
 
-        <x-admin.card-info title="المشتركين" bg="bg-gradient-primary" icon="account-multiple" :value="$subscribers" />
+        <x-admin.card-info title="الزيارات اليومية" bg="bg-gradient-primary" icon="eye" :value="$dailyViews" />
 
-        <x-admin.card-info title="الوظائف" bg="bg-gradient-info" icon="briefcase-check" :value="$jobs" />
+        <x-admin.card-info title="زيارة الاسبوع الحالي" bg="bg-gradient-info" icon="eye" :value="$currentWeekViews" />
 
-        <x-admin.card-info title="طلبات خدمة السيرة" bg="bg-gradient-danger" icon="briefcase-check" value="156" />
+        <x-admin.card-info title=" زيارات الاسبوع الماضي" bg="bg-gradient-danger" icon="eye" :value="$prevWeekViews" />
 
-        <x-admin.card-info title="المشاهدات" bg="bg-gradient-success" icon="eye" :value="$allViews" />
+        <x-admin.card-info title="زيارات الشهر الماضي" bg="bg-gradient-success" icon="eye" :value="$monthlyViews" />
 
-        <x-admin.card-info title="الدول - المدن" bg="bg-gradient-dark" icon="map-marker-multiple" value="{{$countries}} - {{ $cities }}" />
+        <x-admin.card-info title=" مجموع الزيارات " bg="bg-gradient-dark" icon="eye" :value="$allViews" />
 
 
-        <x-admin.table title="الوظائف الاكثر مشاهدة" icon="folder-plus" :columns="['image', 'العنوان']">
+        <x-admin.table title="الوظائف الاكثر مشاهدة" icon="folder-plus" :columns="['image', 'العنوان', 'التحديث' , '']">
             @forelse($popularJobs as $job)
                 <tr>
-                    <td> <img src="{{ storage_path('public/images/jobs/'.$job->image) }}" alt="صورة الوظيفة" srcset="{{ asset('storage/images/jobs/'.$job->image) }}"> </td>
+                    <td> <img src="{{ asset('storage/images/jobs/'.$job->image) }}" alt="صورة الوظيفة" srcset="{{ asset('storage/images/jobs/'.$job->image) }}"> </td>
                     <td> {{ $job->name }} </td>
-                    <td> {{ $job->created_at->diffForHumans() }} </td>
+                    <td> {{ $job->updated_at->diffForHumans() }} </td>
+                    <td>
+                        <a href="{{ route('jobs.edit', $job->id) }}" style="font-size: 1.2rem" class="mdi mdi-table-edit text-success ms-2"></a>
+                    </td>
                 </tr>
             @empty
                 <tr>
@@ -30,10 +33,10 @@
                 @endforelse
         </x-admin.table>
 
-        <x-admin.table title="الوظائف المضافة حديثا" icon="folder-plus" :columns="['image', 'العنوان']">
+        {{-- <x-admin.table title="الوظائف المضافة حديثا" icon="folder-plus" :columns="['image', 'العنوان']">
             @forelse($latestJobs as $job)
                 <tr>
-                    <td> <img src="{{ storage_path('public/images/jobs/'.$job->image) }}" alt="صورة الوظيفة" srcset="{{ asset('storage/images/jobs/'.$job->image) }}"> </td>
+                    <td> <img src="{{ asset('storage/images/jobs/'.$job->image) }}" alt="صورة الوظيفة" srcset="{{ asset('storage/images/jobs/'.$job->image) }}"> </td>
                     <td> {{ $job->name }} </td>
                     <td> {{ $job->created_at->diffForHumans() }} </td>
                 </tr>
@@ -42,7 +45,32 @@
                     <td>{{ __('لا توجد وظائف حاليا') }}</td>
                 </tr>
             @endforelse
-        </x-admin.table>
+        </x-admin.table> --}}
+
+        <x-admin.table title=" روابط التسجيل في أوامر " :columns="['الرابط', '']">
+            <form method="POST" action="{{ route('settings.website.job.awamir.links') }}">
+                @csrf
+
+                    @if(!empty(settings('register_through_awamir')))
+                        @foreach (json_decode(settings('register_through_awamir')) as $link)
+                            <tr>
+                                <td>
+                                    {{-- {{ $link }} --}}
+                                    <input class="w-100 form-control border-0" type="text" name="register_through_awamir[]" value="{{ $link }}">
+                                </td>
+                                <td class="delete-link" style="cursor: pointer">
+                                    {{-- <input type="hidden" name="register_through_awamir[]" value="{{ $link }}"> --}}
+                                    <i class="mdi mdi-delete text-danger"></i>
+                                </td>
+                            </tr>
+
+                        @endforeach
+                    @endif
+                    <button type="submit" class="btn btn-gradient-primary mb-2 float-start position-relative">{{ __('Save') }}</button>
+                </form>
+            </x-admin.table>
+
+
 
         <x-admin.sample-card>
 
@@ -109,6 +137,12 @@
                 options: areaOptions
                 });
             }
+
+            $('.delete-link').each(function () {
+                $(this).click(function () {
+                    $(this).parents('tr').remove();
+                });
+            });
 
         </script>
     @endpush

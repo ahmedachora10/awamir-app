@@ -120,7 +120,7 @@ class SettingController extends Controller
             $setting->save();
         }
 
-        return redirect()->route('settings.index')->with("success", 'تم تحديث الاعدادات بنجاح');
+        return redirect()->back()->with("success", 'تم تحديث الاعدادات بنجاح');
     }
 
     private function updateSettings(Request $request)
