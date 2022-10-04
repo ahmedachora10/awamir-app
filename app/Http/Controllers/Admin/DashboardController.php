@@ -35,15 +35,12 @@ class DashboardController extends Controller
 
         $popularJobs = Post::orderBy('views')->paginate(7);
 
-        $latestJobs = Post::latest()->paginate(7);
-
         $allViews = $view->sum('views');
 
         $jobViewers = $view->all();
 
         return view('pages.admin.dashboard', compact(
-            'popularJobs', 'monthlyViews', 'prevWeekViews', 'currentWeekViews', 'dailyViews',
-            'latestJobs', 'allViews', 'jobViewers',
+            'popularJobs', 'monthlyViews', 'prevWeekViews', 'currentWeekViews', 'dailyViews', 'allViews', 'jobViewers',
 
         ));
     }

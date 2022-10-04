@@ -1,5 +1,6 @@
 <x-app-layout>
 
+    @livewireStyles
     <x-admin.headline title="Dashboard" icon="home"/>
 
     <!-- Cards Info -->
@@ -7,7 +8,7 @@
 
         <x-admin.card-info title="الزيارات اليومية" bg="bg-gradient-primary" icon="eye" :value="$dailyViews" />
 
-        <x-admin.card-info title="زيارة الاسبوع الحالي" bg="bg-gradient-info" icon="eye" :value="$currentWeekViews" />
+        <x-admin.card-info title="زيارات الاسبوع الحالي" bg="bg-gradient-info" icon="eye" :value="$currentWeekViews" />
 
         <x-admin.card-info title=" زيارات الاسبوع الماضي" bg="bg-gradient-danger" icon="eye" :value="$prevWeekViews" />
 
@@ -16,7 +17,7 @@
         <x-admin.card-info title=" مجموع الزيارات " bg="bg-gradient-dark" icon="eye" :value="$allViews" />
 
 
-        <x-admin.table title="الوظائف الاكثر مشاهدة" icon="folder-plus" :columns="['image', 'العنوان', 'التحديث' , '']">
+        {{-- <x-admin.table title="الوظائف الاكثر مشاهدة" icon="folder-plus" :columns="['image', 'العنوان', 'التحديث' , '']">
             @forelse($popularJobs as $job)
                 <tr>
                     <td> <img src="{{ asset('storage/images/jobs/'.$job->image) }}" alt="صورة الوظيفة" srcset="{{ asset('storage/images/jobs/'.$job->image) }}"> </td>
@@ -31,7 +32,9 @@
                     <td>{{ __('لا توجد وظائف حاليا') }}</td>
                     </tr>
                 @endforelse
-        </x-admin.table>
+        </x-admin.table> --}}
+
+        @livewire('admin.jobs-container')
 
         {{-- <x-admin.table title="الوظائف المضافة حديثا" icon="folder-plus" :columns="['image', 'العنوان']">
             @forelse($latestJobs as $job)
@@ -83,6 +86,9 @@
     </div>
 
     @push('scripts')
+
+        <script src="{{ asset('js/helpers.js') }}"></script>
+
         <script>
 
             const viewers = {{ Illuminate\Support\Js::from($jobViewers) }};
@@ -90,10 +96,6 @@
             const date = viewers.map(item => item.date);
 
             const views = viewers.map(item => item.views);
-
-            // console.log(date);
-
-            console.log(viewers);
 
             var data = {
                 labels: date,
@@ -144,7 +146,50 @@
                 });
             });
 
+            const changeStatusBtn = $('.change-status');
+
+        if(changeStatusBtn.length) {
+            changeStatusBtn.each(function() {
+                $(this).click(function () {
+                    const jobId = $(this).attr('data-id');
+                    const lable = $(this).find('label');
+
+                    ajax({
+                        url: '{{ route('posts.change.status') }}',
+                        method: 'PUT',
+                        data: {
+                            job: jobId,
+                        }
+                    }).done(response =>  {
+
+                        if(response.errros) return false;
+
+                        const status = response.status;
+                        const styles = {
+                            1: {
+                                class: 'badge badge-danger',
+                                text: 'مسودة'
+                            },
+                            2: {
+                                class: 'badge badge-info',
+                                text: 'منشور'
+                            }
+
+                        };
+
+                        lable.removeClass();
+
+                        lable.addClass(styles[status].class);
+                        lable.text(styles[status].text);
+
+
+                    });
+                })
+            });
+        }
+
         </script>
     @endpush
 
+    @livewireScripts
 </x-app-layout>
