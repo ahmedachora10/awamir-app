@@ -2,7 +2,7 @@
 
     <x-admin.input type="search" wire:keydown.debounce.500ms="filter" wire:model="search" name="search" placeholder="البحث" class="rounded" />
 
-    <x-admin.table title="All Jobs" icon="folder-plus" :route="route('jobs.create')"  :columns="['name', 'الدولة - المدينة', 'الفئة', 'الزيارات', 'الحالة', 'تاريح الاظافة', 'actions']">
+    <x-admin.table title="كل الوظائف" icon="folder-plus" :route="route('jobs.create')"  :columns="['name', 'الدولة - المدينة', 'الفئة', 'الزيارات', 'الحالة', 'تاريح الاظافة', 'actions']">
 
             @forelse($jobs as $job)
                 <tr>
