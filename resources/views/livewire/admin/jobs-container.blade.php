@@ -10,7 +10,7 @@
                     <td> <label class="badge fw-bold badge-gradient-primary">{{ $job->country->name }} - {{ $job->city->name }} </label> </td>
                     <td> <label class="badge fw-bold badge-gradient-info">{{ $job->category->name }}</label> </td>
                     <td> {{ $job->views }} </td>
-                    <td class="change-status" data-id="{{ $job->id }}">
+                    <td class="change-status" data-id="{{ $job->id }}" style="cursor: pointer">
                         @if($job->status == App\Http\Helpers\PostStatus::PUBLISH->value)
                             <label class="badge badge-info">منشور</label>
                         @else

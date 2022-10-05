@@ -39,9 +39,11 @@ class DashboardController extends Controller
 
         $jobViewers = $view->all();
 
+        $isAdmin = auth()->user()->hasRole('admin');
+
         return view('pages.admin.dashboard', compact(
             'popularJobs', 'monthlyViews', 'prevWeekViews', 'currentWeekViews', 'dailyViews', 'allViews', 'jobViewers',
-
+            'isAdmin'
         ));
     }
 }

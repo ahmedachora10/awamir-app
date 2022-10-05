@@ -33,10 +33,10 @@ Route::middleware('auth')->group(function ()
 
     Route::middleware('role:admin')->group(function ()
     {
+        // Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::group(['prefix' => 'admin'], function ()
         {
-            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::resource('users', UserController::class);
 
             Route::resource('cities', CityController::class);
