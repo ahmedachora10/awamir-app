@@ -29,7 +29,7 @@
                     <option> اختر الدولة </option>
 
                     @foreach ($countries as $country)
-                        <option value="{{ $country->id }}"> {{ $country->name }} </option>
+                        <option value="{{ $country->id }}" @selected($country->id == old('country_id'))> {{ $country->name }} </option>
                     @endforeach
 
                 </x-admin.select-input>
@@ -49,7 +49,8 @@
                     <option> اختر الفئة </option>
 
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                        <option value="{{ $category->id }}" @selected($category->id == old('category_id'))> {{ $category->name }}
+                        </option>
                     @endforeach
 
                 </x-admin.select-input>
@@ -61,7 +62,7 @@
                     <option> اختر نوع الوظيفة </option>
 
                     @foreach ($jobTypes as $type)
-                        <option value="{{ $type->id }}"> {{ $type->name }} </option>
+                        <option value="{{ $type->id }}" @selected($type->id == old('jobtype_id'))> {{ $type->name }} </option>
                     @endforeach
 
                 </x-admin.select-input>
