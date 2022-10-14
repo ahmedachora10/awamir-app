@@ -97,7 +97,8 @@
                 <x-admin.select-input name="register_through_awamir" id="register_through_awamir">
                     <option value=""> التسجيل عبر أوامر </option>
                     @foreach ($supportsLink as $link)
-                        <option value="{{ $link->content }}" title="{{ $link->content }}">
+                        <option value="{{ $link->content }}" @selected($link->content == old('register_through_awamir'))
+                            title="{{ $link->content }}">
                             {{ substr($link->content, 0, 40) }}</option>
                     @endforeach
 
