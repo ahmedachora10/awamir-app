@@ -69,7 +69,7 @@
             </div><!-- End Job Types -->
 
             <div class="col-12 form-group">
-                <textarea name="description" id="description" class="col-12"></textarea>
+                <textarea name="description" id="description" class="col-12">{{ old('description') }}</textarea>
                 <x-admin.error field="description" />
             </div>
 
