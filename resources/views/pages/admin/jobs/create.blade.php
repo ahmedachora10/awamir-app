@@ -136,19 +136,22 @@
             const citiesContainer = $('#city_id');
             const image = document.querySelector('input[id=image]');
 
-            countries.change(function() {
+            function selectCities(cityId = 0) {
                 const id = $('#country_id option:selected').val();
 
                 const countryCities = cities.filter(item => item.country_id == id);
 
                 let content = '<option>اختر المدينة</option>';
                 countryCities.forEach(city => {
-                    content += `<option value="${city.id}">${city.name}</option>`;
+                    content +=
+                        `<option ${city.id == cityId ? 'selected' : null} value="${city.id}">${city.name}</option>`;
                 });
 
                 citiesContainer.html(content);
 
-            });
+            };
+
+            countries.change(selectCities);
 
             tinymce.init({
                 selector: '#description',
@@ -174,6 +177,12 @@
 
             my_file_bond.setOptions('{{ route('jobs.thumbnail') }}');
         </script>
+
+        @if (old('country_id'))
+            <script>
+                selectCities("{{ old('city_id') }}");
+            </script>
+        @endif
     @endpush
 
 </x-app-layout>
