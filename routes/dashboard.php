@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SupportController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -105,6 +106,8 @@ Route::middleware('auth')->group(function ()
             Route::resource('jobs', PostController::class);
 
             Route::resource('job-types', JobTypeController::class);
+
+            Route::resource('supports', SupportController::class);
 
         });
 

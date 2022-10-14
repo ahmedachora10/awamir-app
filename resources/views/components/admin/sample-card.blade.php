@@ -1,7 +1,7 @@
-<div class="col-12 grid-margin stretch-card">
+<div {{ $attributes->merge(['class' => 'col-12 grid-margin stretch-card']) }}>
     <div class="card">
         <div class="card-body">
-                {{ $slot }}
+            {{ $slot }}
         </div>
     </div>
 </div>

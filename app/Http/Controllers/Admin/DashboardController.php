@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\Post;
 use App\Models\Subscriber;
+use App\Models\Support;
 use App\Models\Viewer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -41,9 +42,11 @@ class DashboardController extends Controller
 
         $isAdmin = auth()->user()->hasRole('admin');
 
+        $supportLinks = Support::all();
+
         return view('pages.admin.dashboard', compact(
             'popularJobs', 'monthlyViews', 'prevWeekViews', 'currentWeekViews', 'dailyViews', 'allViews', 'jobViewers',
-            'isAdmin'
+            'isAdmin', 'supportLinks'
         ));
     }
 }

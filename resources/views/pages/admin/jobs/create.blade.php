@@ -1,33 +1,35 @@
 <x-app-layout>
 
-    <x-admin.headline title="وظيفة جديدة" icon="folder-google-drive"/>
+    <x-admin.headline title="وظيفة جديدة" icon="folder-google-drive" />
 
     <x-admin.card-table method="POST" action="{{ route('jobs.store') }}">
 
         <div class="row" dir="rtl">
 
             <div class="form-group col-12">
-                <x-admin.input  type="file" id="image" name="image"  />
+                <x-admin.input type="file" id="image" name="image" />
                 <x-admin.error field="image" />
             </div>
 
 
             <div class="col-md-6 form-group">
-                <x-admin.input type="text" id="name" name="name" :value="old('name')" placeholder="{{ __('العنوان') }}" />
+                <x-admin.input type="text" id="name" name="name" :value="old('name')"
+                    placeholder="{{ __('العنوان') }}" />
                 <x-admin.error field="name" />
             </div>
 
             <div class="col-md-6 form-group">
-                <x-admin.input type="text" id="company" name="company" :value="old('company')" placeholder="{{ __('الشركة') }}" />
+                <x-admin.input type="text" id="company" name="company" :value="old('company')"
+                    placeholder="{{ __('الشركة') }}" />
                 <x-admin.error field="company" />
             </div>
 
             <div class="col-md-6 form-group">
                 <x-admin.select-input name="country_id" id="country_id">
-                    <option>  اختر الدولة </option>
+                    <option> اختر الدولة </option>
 
                     @foreach ($countries as $country)
-                    <option value="{{ $country->id }}"> {{ $country->name }} </option>
+                        <option value="{{ $country->id }}"> {{ $country->name }} </option>
                     @endforeach
 
                 </x-admin.select-input>
@@ -36,7 +38,7 @@
 
             <div class="col-md-6 form-group">
                 <x-admin.select-input name="city_id" id="city_id">
-                    <option>  اختر المدينة </option>
+                    <option> اختر المدينة </option>
 
                 </x-admin.select-input>
                 <x-admin.error field="city_id" />
@@ -44,10 +46,10 @@
 
             <div class="col-md-6 form-group">
                 <x-admin.select-input name="category_id" id="category_id">
-                    <option>  اختر الفئة </option>
+                    <option> اختر الفئة </option>
 
                     @foreach ($categories as $category)
-                    <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                        <option value="{{ $category->id }}"> {{ $category->name }} </option>
                     @endforeach
 
                 </x-admin.select-input>
@@ -56,10 +58,10 @@
 
             <div class="col-md-6 form-group">
                 <x-admin.select-input name="jobtype_id" id="jobtype_id">
-                    <option>  اختر نوع الوظيفة </option>
+                    <option> اختر نوع الوظيفة </option>
 
                     @foreach ($jobTypes as $type)
-                    <option value="{{ $type->id }}"> {{ $type->name }} </option>
+                        <option value="{{ $type->id }}"> {{ $type->name }} </option>
                     @endforeach
 
                 </x-admin.select-input>
@@ -73,25 +75,29 @@
 
 
             <div class="col-md-6 form-group">
-                <x-admin.input type="text" id="source" name="source" :value="old('source')" placeholder="{{ __('المصدر') }}" />
+                <x-admin.input type="text" id="source" name="source" :value="old('source')"
+                    placeholder="{{ __('المصدر') }}" />
                 <x-admin.error field="source" />
             </div>
 
             <div class="col-md-6 form-group">
-                <x-admin.input type="text" id="submission" name="submission" :value="old('submission')" placeholder="{{ __('رابط التقديم') }}" />
+                <x-admin.input type="text" id="submission" name="submission" :value="old('submission')"
+                    placeholder="{{ __('رابط التقديم') }}" />
                 <x-admin.error field="submission" />
             </div>
 
             <div class="col-md-6 form-group">
-                <x-admin.input type="text" id="cv" name="cv" :value="old('cv')" placeholder="{{ __('طلب السيرة') }}" />
+                <x-admin.input type="text" id="cv" name="cv" :value="old('cv')"
+                    placeholder="{{ __('طلب السيرة') }}" />
                 <x-admin.error field="cv" />
             </div>
 
             <div class="col-md-6 form-group">
                 <x-admin.select-input name="register_through_awamir" id="register_through_awamir">
-                    <option> التسجيل عبر أوامر </option>
-                    @foreach (json_decode(settings('register_through_awamir')) as $link)
-                        <option value="{{ $link }}">{{ $link }}</option>
+                    <option value=""> التسجيل عبر أوامر </option>
+                    @foreach ($supportsLink as $link)
+                        <option value="{{ $link->content }}" title="{{ $link->content }}">
+                            {{ substr($link->content, 0, 40) }}</option>
                     @endforeach
 
                 </x-admin.select-input>
@@ -124,13 +130,12 @@
         <script src="{{ asset('js/helpers.js') }}"></script>
 
         <script>
-
             const cities = {{ Illuminate\Support\Js::from($cities) }};
             const countries = $('#country_id');
             const citiesContainer = $('#city_id');
             const image = document.querySelector('input[id=image]');
 
-            countries.change(function () {
+            countries.change(function() {
                 const id = $('#country_id option:selected').val();
 
                 const countryCities = cities.filter(item => item.country_id == id);
@@ -148,28 +153,26 @@
                 selector: '#description',
                 // inline: true,
                 plugins: [
-                'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
-                'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
-                'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+                    'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
+                    'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
+                    'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help',
+                    'wordcount'
                 ],
                 toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
-                'alignleft aligncenter alignright alignjustify | ' +
-                'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
+                    'alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
             });
 
 
-            const my_file_bond = filePond(image,{
-                required:true,
+            const my_file_bond = filePond(image, {
+                required: true,
                 labelIdle: ' سحب وافلات صورة   <span class="filepond--label-action text-primary"> تصفح </span>',
                 labelFileLoadError: 'الصيغ المدعومة هي jpg,jpeg,svg,webp,png',
                 labelInvalidField: 'الصيغ المدعومة هي jpg,jpeg,svg,webp,png',
             });
 
-            my_file_bond.setOptions('{{route("jobs.thumbnail")}}');
-
-
+            my_file_bond.setOptions('{{ route('jobs.thumbnail') }}');
         </script>
-
     @endpush
 
 </x-app-layout>

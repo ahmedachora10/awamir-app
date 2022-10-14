@@ -13,6 +13,7 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\JobType;
+use App\Models\Support;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,7 +47,9 @@ class PostController extends Controller
 
         $cities = City::all(['id', 'country_id', 'name']);
 
-        return view('pages.admin.jobs.create', compact('countries', 'categories', 'jobTypes', 'cities'));
+        $supportsLink = Support::all();
+
+        return view('pages.admin.jobs.create', compact('countries', 'categories', 'jobTypes', 'cities', 'supportsLink'));
     }
 
     /**
@@ -106,7 +109,9 @@ class PostController extends Controller
 
         $cities = City::all(['id', 'country_id', 'name']);
 
-        return view('pages.admin.jobs.edit', compact('job', 'countries', 'categories', 'jobTypes', 'cities'));
+        $supportsLink = Support::all();
+
+        return view('pages.admin.jobs.edit', compact('job', 'countries', 'categories', 'jobTypes', 'cities', 'supportsLink'));
     }
 
     /**
