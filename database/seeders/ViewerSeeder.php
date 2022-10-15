@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\JobType;
+use App\Models\Viewer;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class JobTypeSeeder extends Seeder
+class ViewerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,11 +16,12 @@ class JobTypeSeeder extends Seeder
      */
     public function run()
     {
-        $types = DB::connection('new_mysql')->table('jobs')->select('type')->distinct()->get();
+        $viewrs = DB::connection('new_mysql')->table('views')->get();
 
-        foreach ($types as $type) {
-            JobType::create([
-                'name' => $type->type
+        foreach ($viewrs as $view) {
+            Viewer::create([
+                'date' => $view->date,
+                'views' => $view->views
             ]);
         }
     }

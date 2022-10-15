@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\JobType;
+use App\Models\Subscriber;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class JobTypeSeeder extends Seeder
+class SubscriberSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,11 +16,11 @@ class JobTypeSeeder extends Seeder
      */
     public function run()
     {
-        $types = DB::connection('new_mysql')->table('jobs')->select('type')->distinct()->get();
+        $subs = DB::connection('new_mysql')->table('subs')->select('email')->distinct()->get();
 
-        foreach ($types as $type) {
-            JobType::create([
-                'name' => $type->type
+        foreach ($subs as $sub) {
+            Subscriber::create([
+                'email' => $sub->email
             ]);
         }
     }

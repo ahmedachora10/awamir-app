@@ -28,8 +28,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $jobs = Post::with('city','country', 'category')->latest()->get();
-        return view('pages.admin.jobs.index', compact('jobs'));
+        // $jobs = Post::with('city','country', 'category')->latest()->get();
+        return view('pages.admin.jobs.index');
     }
 
     /**

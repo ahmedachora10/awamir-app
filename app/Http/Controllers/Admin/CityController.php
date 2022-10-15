@@ -17,8 +17,8 @@ class CityController extends Controller
      */
     public function index()
     {
-        $cities = City::with('country')->latest()->get();
-        return view('pages.admin.cities.index', compact('cities'));
+        // $cities = City::with('country')->latest()->get();
+        return view('pages.admin.cities.index');
     }
 
     /**

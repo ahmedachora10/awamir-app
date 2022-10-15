@@ -16,9 +16,9 @@ class SubscriberController extends Controller
      */
     public function index()
     {
-        $subscribers = Subscriber::latest()->get();
+        // $subscribers = Subscriber::latest()->get();
 
-        return view('pages.admin.subscribers.index', compact('subscribers'));
+        return view('pages.admin.subscribers.index');
     }
 
     /**
