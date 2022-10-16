@@ -88,7 +88,7 @@ class HomeController extends Controller
             المحتوى  :
             '.$request->content;
 
-        Mail::to(settings('email'))->send(new SendContactEmail($content));
+        Mail::to('ahmed.achora@gmail.com')->send(new SendContactEmail($content));
 
         return response()->json([
             'status'=>1
