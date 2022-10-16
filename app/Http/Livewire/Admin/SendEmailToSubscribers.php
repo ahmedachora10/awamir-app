@@ -21,7 +21,7 @@ class SendEmailToSubscribers extends Component
     {
         $latestJobs = Post::latest()->take($this->jobsCount)->get();
 
-        Mail::to('ahmed.achora@gmail.com')->send(new SendLatestJobs($latestJobs));
+        Mail::to(Subscriber::select('email')->first()->email)->send(new SendLatestJobs($latestJobs));
 
         // Subscriber::select('email')->chunk(20,function ($subscribers) use($latestJobs)
         // {
