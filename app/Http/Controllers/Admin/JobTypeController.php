@@ -84,7 +84,7 @@ class JobTypeController extends Controller
             $posts->delete();
         }
         // $jobType->posts()->delete();
-        $jobType->delete();
+        $jobType->deleteOrFail();
         return redirect()->route('job-types.index')->with('success', 'تم حذف العنصر بنجاح');
     }
 }
