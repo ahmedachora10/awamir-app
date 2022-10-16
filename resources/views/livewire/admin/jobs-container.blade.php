@@ -44,7 +44,9 @@
                         <a href="{{ route('jobs.edit', $job->id) }}" style="font-size: 1.2rem"
                             class="mdi mdi-table-edit text-success ms-2"></a>
                         {{-- <a href="" style="font-size: 1.2rem" class="mdi mdi-account-remove text-danger"></a> --}}
-                        <x-admin.delete-button :route="route('jobs.destroy', $job->id)" class="mdi mdi-delete text-danger" />
+                        @if ($isAdmin)
+                            <x-admin.delete-button :route="route('jobs.destroy', $job->id)" class="mdi mdi-delete text-danger" />
+                        @endif
                     </div>
                 </td>
             </tr>

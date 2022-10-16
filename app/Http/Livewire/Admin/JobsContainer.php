@@ -16,10 +16,13 @@ class JobsContainer extends Component
 
     public $search;
 
+    public $isAdmin;
+
     protected $paginationTheme = 'bootstrap';
 
     public function mount()
     {
+        $this->isAdmin = auth()->user()->hasRole('admin');
         $this->posts = Post::with('city','country', 'category')->latest()->paginate(self::PAGINATE_NUMBER);
     }
 
