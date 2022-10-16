@@ -26,7 +26,7 @@ class SendEmailToSubscribers extends Component
         Subscriber::select('email')->chunk(20,function ($subscribers) use($latestJobs)
         {
             foreach ($subscribers as $subscriber) {
-                echo json_encode([$subscriber]); die();
+                dd($subscriber);
             }
             dispatch(new SendSubscribersEmailJob($subscribers, $latestJobs));
         });
