@@ -79,10 +79,10 @@ class JobTypeController extends Controller
      */
     public function destroy(JobType $jobType)
     {
-        $posts = $jobType->posts();
-        if($posts->count() > 0) {
-            $posts->delete();
-        }
+        // $posts = $jobType->posts();
+        // if($posts->count() > 0) {
+        //     $posts->delete();
+        // }
         // $jobType->posts()->delete();
         $jobType->deleteOrFail();
         return redirect()->route('job-types.index')->with('success', 'تم حذف العنصر بنجاح');
