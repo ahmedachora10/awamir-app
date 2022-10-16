@@ -13,6 +13,6 @@ class JobType extends Model
 
     public function cities()
     {
-        return $this->hasMany(cities::class);
+        return $this->hasMany(City::class);
     }
 }
