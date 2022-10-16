@@ -13,6 +13,6 @@ class JobType extends Model
 
     public function posts()
     {
-        return $this->hasMany(Post::class, 'id', 'jobtype_id');
+        return $this->hasMany(Post::class);
     }
 }
