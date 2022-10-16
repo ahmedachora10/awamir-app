@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Helpers\PostStatus;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Post;
@@ -36,6 +37,8 @@ class PostController extends Controller
 
     public function show(Post $job)
     {
+
+        abort_if(!auth()->check() && $job->status == PostStatus::DRAFT->value, 404);
 
         $viewer = Viewer::where('date',now()->format('Y-m-d'))->first();
 
