@@ -64,7 +64,7 @@ Route::controller(PostController::class)->prefix('jobs')->name('web.jobs.')->gro
 {
     Route::get('/', 'index')->name('index');
 
-    Route::get('show/{job}', 'show')->name('show');
+    Route::get('{job}', 'show')->name('show');
 
     Route::get('load', 'loadJobs')->name('load');
 
