@@ -16,13 +16,9 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        // $countries = DB::connection('new_mysql')->table('jobs')->select('city')->distinct()->get();
-
-        // foreach ($countries as $country) {
-        //     Country::create([
-        //         'name' => $country->city
-        //     ]);
-        // }
+            Country::create([
+                'name' => 'السعودية'
+            ]);
 
     }
 }

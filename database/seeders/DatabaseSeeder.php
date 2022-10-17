@@ -24,10 +24,15 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
+            UserSeeder::class,
+            RoleSeeder::class,
+            CategorySeeder::class,
+            CountrySeeder::class,
             CitySeeder::class,
             JobTypeSeeder::class,
             PostSeeder::class,
-            ViewerSeeder::class
+            ViewerSeeder::class,
+            SubscriberSeeder::class
         ]);
     }
 }

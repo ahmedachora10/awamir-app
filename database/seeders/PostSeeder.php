@@ -26,6 +26,7 @@ class PostSeeder extends Seeder
 
         foreach ($jobs as $job) {
             Post::create([
+                'id' => $job->id,
                 'category_id' => Category::where('name', $job->categorie)->first()->id,
                 'country_id' => Country::first()->id,
                 'city_id' => City::where('name', $job->city)->first()->id,
