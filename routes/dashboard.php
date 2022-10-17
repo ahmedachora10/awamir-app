@@ -40,11 +40,8 @@ Route::middleware('auth')->group(function ()
         {
             Route::resource('users', UserController::class);
 
-            Route::resource('cities', CityController::class);
-
             Route::resource('subscribers', SubscriberController::class);
 
-            Route::resource('countries', CountryController::class);
 
             // Route::post('jobs/thumbnail/upload', [PostController::class, 'thumbnail'])
             // ->name('jobs.thumbnail');
@@ -108,6 +105,17 @@ Route::middleware('auth')->group(function ()
             Route::resource('job-types', JobTypeController::class);
 
             Route::resource('supports', SupportController::class);
+
+            /**
+             * Country Routes
+             */
+
+            Route::resource('countries', CountryController::class);
+
+            /**
+             * City Routes
+             */
+            Route::resource('cities', CityController::class);
 
         });
 

@@ -25,7 +25,7 @@ class UpdateCityRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', new AlphaSpace],
+            'name' => ['required', 'string'],
             'country_id' => ['required', 'integer', 'exists:countries,id']
         ];
     }

@@ -8,8 +8,6 @@
         @role('admin')
             <x-admin.link title="المستخدمين" icon="account-multiple" route="users.index" />
             {{-- <x-admin.link title="أنواع الوظائف" icon="format-list-bulleted" route="categories.index" /> --}}
-            <x-admin.link title="الدول" icon="map-marker-multiple" route="countries.index" />
-            <x-admin.link title="المدن" icon="city" route="cities.index" />
             <x-admin.link title="المشتركين" icon="account-multiple-plus" route="subscribers.index" />
         @endrole
 
@@ -17,6 +15,8 @@
             {{-- <x-admin.link title="الوظائف" icon="lan" route="jobs.index" />
             <x-admin.link title="انواع الوظائف" icon="lan" route="job-types.index" /> --}}
 
+            <x-admin.link title="الدول" icon="map-marker-multiple" route="countries.index" />
+            <x-admin.link title="المدن" icon="city" route="cities.index" />
             <x-admin.dropdown-container title="الوظائف" href="jobs" icon="wallet-travel">
                 <x-admin.dropdown-menu id="jobs">
                     <x-admin.dropdown-link title="الوظائف" route="jobs.index" />
@@ -24,7 +24,6 @@
                     <x-admin.dropdown-link title="لانواع" route="job-types.index" />
                 </x-admin.dropdown-menu>
             </x-admin.dropdown-container>
-
         @endrole
 
 
@@ -33,7 +32,7 @@
             <x-admin.link title="الاعدادات" icon="settings-box" route="settings.index" />
         @endrole
 
-                {{-- <x-admin.link title="Permissions" icon="key-variant" route="admin.permissions.show" /> --}}
+        {{-- <x-admin.link title="Permissions" icon="key-variant" route="admin.permissions.show" /> --}}
 
 
         {{-- <x-admin.link title="Settings" icon="settings" route="admin.settings.show" /> --}}
