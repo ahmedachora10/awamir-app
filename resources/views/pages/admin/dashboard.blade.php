@@ -38,42 +38,6 @@
         @if ($isAdmin || !$isAdmin)
             @livewire('admin.jobs-container')
 
-            {{-- <x-admin.table title="الوظائف المضافة حديثا" icon="folder-plus" :columns="['image', 'العنوان']">
-                @forelse($latestJobs as $job)
-                    <tr>
-                        <td> <img src="{{ asset('storage/images/jobs/'.$job->image) }}" alt="صورة الوظيفة" srcset="{{ asset('storage/images/jobs/'.$job->image) }}"> </td>
-                        <td> {{ $job->name }} </td>
-                        <td> {{ $job->created_at->diffForHumans() }} </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td>{{ __('لا توجد وظائف حاليا') }}</td>
-                    </tr>
-                @endforelse
-            </x-admin.table> --}}
-
-            {{-- <x-admin.table title=" روابط التسجيل في أوامر " :columns="['الرابط', 'الوقت', '']">
-                <form method="POST" action="{{ route('supports.store') }}">
-                    @csrf
-                    @foreach ($supportLinks as $link)
-                        <tr>
-                            <td>
-                                <input class="w-100 form-control border-0" type="text" name="content" value="{{ $link->content }}">
-                            </td>
-                            <td>
-                                <input class="w-100 form-control border-0" type="time" name="time" value="{{ $link->time }}">
-                            </td>
-                            <td class="delete-link" style="cursor: pointer">
-
-                                <i class="mdi mdi-delete text-danger"></i>
-                            </td>
-                        </tr>
-
-                    @endforeach
-                    <button type="submit" class="btn btn-gradient-primary mb-2 float-start position-relative">{{ __('Save') }}</button>
-                </form>
-            </x-admin.table> --}}
-
             @livewire('admin.support-section')
         @endif
 

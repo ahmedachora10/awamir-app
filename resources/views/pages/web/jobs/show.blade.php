@@ -10,13 +10,25 @@
             <div class="main">
                 <x-web.social-media-container />
 
-                <div class="tab mt-5">
+                <div class="tab mt-5 position-relative overflow-hidden">
+
+                    @if (request('status') != '')
+                        @if (request('status') == 'new' &&
+                            $job->created_at >=
+                                now()->subDays(2)->format('Y-m-d H:i:s'))
+                            <span class="position-absolute bar new-jobs">جديد </span>
+                        @elseif(request('status') == 'important' &&
+                            $job->created_at >=
+                                now()->subDays(10)->format('Y-m-d H:i:s'))
+                            <span class="position-absolute bar important-jobs">رائج</span>
+                        @endif
+                    @endif
 
                     <div class="sd1">
                         <img src="{{ asset('storage/images/jobs/' . $job->image) }}" />
                     </div>
 
-                    <div class="sd2">
+                    <div class="sd2 ps-3">
                         <h2>{{ $job->name }}</h2>
                         <h3><i class="bi bi-building"></i> &nbsp; {{ $job->company }}</h3>
                     </div>
@@ -53,7 +65,8 @@
                         @if (!empty($job->register_through_awamir))
                             <a href='{{ $job->register_through_awamir }}' target='_blank'>
                                 <button class="btn_job"
-                                    style="background-color:{{ settings('register_through_awamir_bg') }} ;">تسجيل عبر
+                                    style="background-color:{{ settings('register_through_awamir_bg') }} ;">تسجيل
+                                    عبر
                                     الواتساب <i class="bi bi-whatsapp"></i>
                                 </button>
                             </a>

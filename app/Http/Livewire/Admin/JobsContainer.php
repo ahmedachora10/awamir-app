@@ -46,7 +46,7 @@ class JobsContainer extends Component
     {
         // $jobs = $this->posts ?? [];
         return view('livewire.admin.jobs-container', [
-            'jobs' => Post::with('city','country', 'category')->where('posts.name', 'like', "%".$this->search."%")->paginate(self::PAGINATE_NUMBER)
+            'jobs' => Post::with('city','country', 'category')->where('posts.name', 'like', "%".$this->search."%")->latest()->paginate(self::PAGINATE_NUMBER)
         ]);
     }
 }
