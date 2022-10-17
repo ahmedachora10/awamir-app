@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('category_id')->constrained('categories')->onUpdate()->onDelete();
-            $table->foreignId('country_id')->constrained('countries')->onUpdate()->onDelete();
-            $table->foreignId('city_id')->constrained('cities')->onUpdate()->onDelete();
-            $table->foreignId('jobtype_id')->constrained('job_types')->onUpdate()->onDelete(); // full time or part time
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+            $table->foreignId('country_id')->constrained('countries')->cascadeOnDelete();
+            $table->foreignId('city_id')->constrained('cities')->cascadeOnDelete();
+            $table->foreignId('jobtype_id')->constrained('job_types')->cascadeOnDelete(); // full time or part time
 
             $table->string('name');
             $table->string('slug');
