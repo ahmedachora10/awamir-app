@@ -24,11 +24,10 @@ class HomeController extends Controller
 
     public function index()
     {
-        $job = Post::published();
+        $latestJobs = Post::published()->where('created_at', '>=', now()->subDays(2)->format('Y-m-d H:i:s'))->latest()->take(10)->get();
 
-        $latestJobs = $job->where('created_at', '>=', now()->subDays(2)->format('Y-m-d H:i:s'))->latest()->take(10)->get();
-
-        $importantJobs = $job->whereBetween('created_at', [now()->subDays(10)->format('Y-m-d H:i:s'), now()->subDays(2)->format('Y-m-d H:i:s')])
+        $importantJobs = Post::published()->where('created_at', '<', now()->subDays(2)->format('Y-m-d H:i:s'))
+        ->where('created_at', '>=', now()->subDays(10)->format('Y-m-d H:i:s'))
         ->orderBy('views')->take(10)->get();
 
         $categories = Category::all();

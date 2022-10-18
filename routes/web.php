@@ -40,12 +40,6 @@ Route::middleware('role:admin')->group(function ()
 
     })->name('commands.link');
 
-    Route::get('/migrate', function ()
-    {
-        Artisan::call('migrate');
-        return 'Done';
-    });
-
 });
 
 
