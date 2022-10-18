@@ -13,7 +13,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('vendors/mdi/css/materialdesignicons.min.css') }}">
@@ -28,7 +29,9 @@
     {{-- @vite('resources/css/app.css') --}}
 
     <style>
-        .form-control {font-size: 0.9125rem !important;}
+        .form-control {
+            font-size: 0.9125rem !important;
+        }
 
         .form-check-reverse {
             padding-right: 1.5em;
@@ -45,7 +48,6 @@
             margin-right: -2.5em;
             margin-left: 0;
         }
-
     </style>
 
     <!-- Scripts -->

@@ -19,7 +19,7 @@ class SupportSection extends Component
 
     protected $rules = [
         'content' => 'required|string',
-        'time' => 'required|string',
+        'time' => 'nullable|string',
     ];
 
     public function apply(Support $support)
