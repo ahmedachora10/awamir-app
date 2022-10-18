@@ -1,16 +1,16 @@
-<a href="{{ route('web.jobs.show', $job) }}?status={{ $status }}">
+<a href="{{ route('web.jobs.show', $job) }}">
     <div class="jobtab position-relative" style="overflow: hidden" style="max-width: 45%;">
-        @if ($status != '')
-            @if ($status == 'new' &&
-                $job->created_at >=
-                    now()->subDays(2)->format('Y-m-d H:i:s'))
-                <span class="position-absolute bar new-jobs">جديد </span>
-            @elseif($status == 'important' &&
-                $job->created_at >=
-                    now()->subDays(10)->format('Y-m-d H:i:s'))
-                <span class="position-absolute bar important-jobs">رائج</span>
-            @endif
+
+        @if ($job->created_at >=
+            now()->subDays(2)->format('Y-m-d H:i:s'))
+            <span class="position-absolute bar new-jobs">جديد </span>
+        @elseif($job->created_at >=
+            now()->subDays(10)->format('Y-m-d H:i:s') &&
+            $job->created_at <
+                now()->subDays(2)->format('Y-m-d H:i:s'))
+            <span class="position-absolute bar important-jobs">رائج</span>
         @endif
+
         <div class="sec1 ">
             <div class="con">
                 <img src="{{ asset('storage/images/jobs/' . $job->image) }}">

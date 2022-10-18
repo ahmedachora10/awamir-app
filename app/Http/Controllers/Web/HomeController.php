@@ -24,8 +24,6 @@ class HomeController extends Controller
 
     public function index()
     {
-        // $jobs = DB::connection('new_mysql')->table('jobs')->select('city')->distinct()->get();
-        // dd($jobs);
         $job = Post::published();
 
         $latestJobs = $job->latest()->take(10)->get();

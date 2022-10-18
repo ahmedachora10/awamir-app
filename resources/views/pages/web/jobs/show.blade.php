@@ -12,16 +12,14 @@
 
                 <div class="tab mt-5 position-relative overflow-hidden">
 
-                    @if (request('status') != '')
-                        @if (request('status') == 'new' &&
-                            $job->created_at >=
-                                now()->subDays(2)->format('Y-m-d H:i:s'))
-                            <span class="position-absolute bar new-jobs">جديد </span>
-                        @elseif(request('status') == 'important' &&
-                            $job->created_at >=
-                                now()->subDays(10)->format('Y-m-d H:i:s'))
-                            <span class="position-absolute bar important-jobs">رائج</span>
-                        @endif
+                    @if ($job->created_at >=
+                        now()->subDays(2)->format('Y-m-d H:i:s'))
+                        <span class="position-absolute bar new-jobs">جديد </span>
+                    @elseif($job->created_at >=
+                        now()->subDays(10)->format('Y-m-d H:i:s') &&
+                        $job->created_at <
+                            now()->subDays(2)->format('Y-m-d H:i:s'))
+                        <span class="position-absolute bar important-jobs">رائج</span>
                     @endif
 
                     <div class="sd1">
@@ -125,21 +123,7 @@
                 <br>
                 <h4 style="font-size: 18px;margin:10px 0 ;">وظائف قد تعجبك</h4>
                 @foreach ($relatedJobs as $related)
-                    <a href="{{ route('web.jobs.show', $related) }}">
-                        <div class="jobtab" style="width:95% !important ;margin: 20px 0;display: block;">
-                            <div class="sec1 ">
-                                <div class="con">
-                                    <img src="{{ asset('storage/images/jobs/' . $related->image) }}">
-                                </div>
-                            </div>
-                            <div class="sec2">
-                                <h3>{{ $related->name }} </h3>
-                                <div class="company">{{ $related->company }}</div>
-                                <p>{{ Str::limit(Str::replace('&nbsp;', ' ', strip_tags($related->description)), 65, ' ...') }}
-                                </p>
-                            </div>
-                        </div>
-                    </a>
+                    <x-web.job-card :job="$related" />
                 @endforeach
             </div>
         </div>
