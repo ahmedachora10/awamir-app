@@ -81,7 +81,7 @@
 
                         @if (!empty($job->whatsapp))
                             <a
-                                href="whatsapp://send?text=*{{ $job->name }}* %20%0A رابط التقديم: {{ route('web.jobs.show', $job) }} : %20%0A من قروب أوامر توظيف : {{ settings('whatsapp') }}">
+                                href="whatsapp://send?text=*{{ $job->name }}* %20%0A رابط التقديم: {{ route('web.jobs.show', $job) }} : %20%0A من قروب أوامر توظيف : {{ settings('telegram') }}">
                                 <button class="btn_job" style="background-color:{{ settings('whatsapp_share_bg') }} ">
                                     <i class="bi bi-whatsapp"></i> تسجيل عبر واتساب
                                 </button>
