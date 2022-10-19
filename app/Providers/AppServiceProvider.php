@@ -26,7 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Config::set(['settings' => collect(Setting::all())]);
+        // Config::set(['settings' => collect(Setting::all())]);
         // View::share('settings', collect(Setting::all()));
+        // config('app.name', settings('site_name'));
     }
 }

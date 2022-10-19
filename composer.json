@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "artesaos/seotools": "^1.0",
         "barryvdh/laravel-debugbar": "^3.7",
         "doctrine/dbal": "^3.4",
         "guzzlehttp/guzzle": "^7.2",

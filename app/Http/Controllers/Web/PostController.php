@@ -8,12 +8,21 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Post;
 use App\Models\Viewer;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function index()
     {
+
+        SEOTools::setTitle('كل الوظائف')
+        ->setDescription(settings('site_description'))
+        ->opengraph()->setUrl(route('web.jobs.index'))
+        ->addProperty('type', 'JobPosting');
+        SEOTools::twitter()->setSite('@Awamirtawzif');
+
         $categories = Category::all();
 
         $cities = City::all();
@@ -32,6 +41,13 @@ class PostController extends Controller
 
         $jobs = $jobs->get();
 
+        $images = [];
+        for ($i=0; $i < 5; $i++) {
+            $images[] = asset('storage/images/jobs/' . $jobs[$i]->image);
+        }
+
+        SEOTools::addImages($images);
+
         return view('pages.web.jobs.index', compact('categories', 'cities', 'jobs'));
     }
 
@@ -39,6 +55,14 @@ class PostController extends Controller
     {
 
         abort_if(!auth()->check() && $job->status == PostStatus::DRAFT->value, 404);
+
+        SEOTools::setTitle($job->name)
+        ->setDescription($job->description)
+        ->opengraph()->setUrl(route('web.jobs.show', $job))
+        ->addProperty('type', 'JobPosting');
+        SEOTools::twitter()->setSite('@Awamirtawzif');
+        SEOTools::jsonLd()->addImage($job->image);
+
 
         $viewer = Viewer::where('date',now()->format('Y-m-d'))->first();
 

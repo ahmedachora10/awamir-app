@@ -13,6 +13,7 @@ use App\Models\JobType;
 use App\Models\Post;
 use App\Models\Viewer;
 use App\Rules\Text;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -22,8 +23,16 @@ use Symfony\Component\Mailer\Messenger\SendEmailMessage;
 class HomeController extends Controller
 {
 
+    public function __construct() {
+
+        SEOTools::setDescription(settings('site_description'));
+    }
+
     public function index()
     {
+
+        SEOTools::setTitle(' الرئيسية');
+
         $latestJobs = Post::published()->where('created_at', '>=', now()->subDays(2)->format('Y-m-d H:i:s'))->latest()->take(10)->get();
 
         $importantJobs = Post::published()->where('created_at', '<', now()->subDays(2)->format('Y-m-d H:i:s'))
@@ -37,29 +46,34 @@ class HomeController extends Controller
 
     public function resumeService()
     {
+        SEOTools::setTitle(' خدمة السيرة الذاتية ');
         return view('pages.web.resume');
     }
 
     public function about()
     {
+        SEOTools::setTitle(' نبدة عنا ');
         $page = settings('about');
         return view('pages.web.static-page', compact('page'));
     }
 
     public function privacy()
     {
+        SEOTools::setTitle(' الخصوصية ');
         $page = settings('privacy');
         return view('pages.web.static-page', compact('page'));
     }
 
     public function terms()
     {
+        SEOTools::setTitle(' الشروط ');
         $page = settings('terms');
         return view('pages.web.static-page', compact('page'));
     }
 
     public function contact()
     {
+        SEOTools::setTitle(' تواصل معنا ');
         return view('pages.web.contact');
     }
 

@@ -6,7 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ settings('site_name') ?? config('app.name', settings('site_name')) }}</title>
+    {{-- <title>{{ settings('site_name') ?? config('app.name', settings('site_name')) }}</title> --}}
+
+    {{-- {!! SEOMeta::generate() !!} --}}
+
+    <!-- MINIFIED -->
+    {!! SEO::generate() !!}
+
+    <!-- LUMEN -->
+    {!! app('seotools')->generate() !!}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap" rel="stylesheet">
@@ -23,12 +31,12 @@
 
     <style>
         :root {
-            --color-text : {{ settings('color_6') }};
-            --roy : {{ settings('color_1') }} ;
-            --roy-opt : {{ settings('color_4') }} ;
-            --roy-opt2 : {{ settings('color_5') }};
-            --roy-hov : {{ settings('color_3') }}  ;
-            --roy-light : {{ settings('color_2') }};
+            --color-text: {{ settings('color_6') }};
+            --roy: {{ settings('color_1') }};
+            --roy-opt: {{ settings('color_4') }};
+            --roy-opt2: {{ settings('color_5') }};
+            --roy-hov: {{ settings('color_3') }};
+            --roy-light: {{ settings('color_2') }};
         }
 
         .bar {
@@ -74,72 +82,74 @@
 
     @include('layouts.web.footer')
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script type="text/javascript" src=" {{ asset('js/web/bootstrap_5.0.1.js') }}"></script>
 
     {{-- @vite('resources/js/app.js') --}}
 
 
-  <script>
+    <script>
         // get date
         var date = new Date();
-        var date2 = new Date().toLocaleDateString('ar-SA') ;
+        var date2 = new Date().toLocaleDateString('ar-SA');
         var months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو",
-                "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
-                    ];
+            "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+        ];
         var days = ["اﻷحد", "اﻷثنين", "الثلاثاء", "اﻷربعاء", "الخميس", "الجمعة", "السبت"];
-        var delDateString =  date.getDate() + '/'+(date.getMonth()+1) +'/' + date.getFullYear() + ' م ';
+        var delDateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' م ';
 
-        $('.mdate').text(delDateString) ;
-        $('.hdate').text(date2) ;
+        $('.mdate').text(delDateString);
+        $('.hdate').text(date2);
 
         // ex-menu show
-        $('.ex-menu-ico').click(function(){
-            $('.ex-menu').slideToggle(50) ;
+        $('.ex-menu-ico').click(function() {
+            $('.ex-menu').slideToggle(50);
         });
 
         // open and close sm-menu
-        $('.sm-menu-ico .mni').click(function(){
-            $('.mni').hide() ;
-            $('.sm-menu-ico .close ').delay().fadeIn(100) ;
-            $(".sm-menu").animate({width:'toggle'},350);
+        $('.sm-menu-ico .mni').click(function() {
+            $('.mni').hide();
+            $('.sm-menu-ico .close ').delay().fadeIn(100);
+            $(".sm-menu").animate({
+                width: 'toggle'
+            }, 350);
         });
-        $('.sm-menu-ico .close').click(function(){
-            $('.sm-menu-ico .close').hide() ;
-            $('.mni').delay().fadeIn(100) ;
-            $(".sm-menu").animate({width:'toggle'},350);
+        $('.sm-menu-ico .close').click(function() {
+            $('.sm-menu-ico .close').hide();
+            $('.mni').delay().fadeIn(100);
+            $(".sm-menu").animate({
+                width: 'toggle'
+            }, 350);
         });
 
         // on scroll fix menu
-        $(window).bind('scroll', function () {
+        $(window).bind('scroll', function() {
             if ($(window).scrollTop() > 50) {
                 $('.smenu').addClass('f-menu');
-        } else {
+            } else {
                 $('.smenu').removeClass('f-menu');
-        }
+            }
         });
-
     </script>
 
 
     <script>
-
-        if($('.cat2').length) {
-            $('.cat2').click(function(){
-                $('.cat1').removeClass('cat-act') ;
-                $('.cat2').addClass('cat-act') ;
-                $('.new-job').fadeOut(500) ;
-                $('.imp-job').delay(500).fadeIn() ;
+        if ($('.cat2').length) {
+            $('.cat2').click(function() {
+                $('.cat1').removeClass('cat-act');
+                $('.cat2').addClass('cat-act');
+                $('.new-job').fadeOut(500);
+                $('.imp-job').delay(500).fadeIn();
             });
 
-            $('.cat1').click(function(){
-                $('.cat2').removeClass('cat-act') ;
-                $('.cat1').addClass('cat-act') ;
-                $('.imp-job').fadeOut(500) ;
-                $('.new-job').delay(500).fadeIn() ;
+            $('.cat1').click(function() {
+                $('.cat2').removeClass('cat-act');
+                $('.cat1').addClass('cat-act');
+                $('.imp-job').fadeOut(500);
+                $('.new-job').delay(500).fadeIn();
             });
         }
-
     </script>
 
 
