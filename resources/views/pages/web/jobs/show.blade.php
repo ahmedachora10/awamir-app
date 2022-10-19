@@ -76,10 +76,13 @@
                                         class="bi bi-file-earmark-person"></i> </button></a>
                         @endif
 
+                        {{-- 'whatsapp://send?text=*{{$job->title}}* %20%0A رابط التقديم: {{$url}} %20%0A من قروب أوامر توظيف :
+                        {{ $variables->where("type" , "social")->where("name", "tel")->first()->content }}' --}}
+
                         @if (!empty($job->whatsapp))
                             <a
-                                href='whatsapp://send?text= {{ $job->name }} - {{ route('web.jobs.show', $job) }}  '>
-                                <button class="btn_job" style="background-color:{{ settings('whatsapp_share_bg') }}">
+                                href="whatsapp://send?text=*{{ $job->name }}* %20%0A رابط التقديم: {{ route('web.jobs.show', $job) }} : %20%0A من قروب أوامر توظيف : {{ settings('whatsapp') }}">
+                                <button class="btn_job" style="background-color:{{ settings('whatsapp_share_bg') }} ">
                                     <i class="bi bi-whatsapp"></i> تسجيل عبر واتساب
                                 </button>
                             </a>
