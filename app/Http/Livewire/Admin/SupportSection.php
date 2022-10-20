@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Post;
+use App\Models\Setting;
 use App\Models\Support;
 use Livewire\Component;
 
@@ -11,6 +12,7 @@ class SupportSection extends Component
     public $supportId = 0;
     public $content;
     public $time;
+    public $type;
     public $eventName = '';
     public $open = false;
 
@@ -20,12 +22,25 @@ class SupportSection extends Component
     protected $rules = [
         'content' => 'required|string',
         'time' => 'nullable|string',
+        'type' => 'required|integer',
     ];
+
+
+    function mount($type = 1)
+    {
+        $this->type = $type;
+    }
 
     public function apply(Support $support)
     {
         if($support) {
-            Post::whereNotNull('register_through_awamir')->update(['register_through_awamir' => $support->content]);
+            if($this->type == 1) {
+                Post::whereNotNull('register_through_awamir')->update(['register_through_awamir' => $support->content]);
+            }
+
+            if($this->type == 2) {
+                Setting::where('name', 'cv_phone_number')->update(['content' => $support->content]);
+            }
             session()->flash('success', 'تم تحديث كل الوظائف بنجاح');
         }
     }
@@ -35,7 +50,7 @@ class SupportSection extends Component
         Support::create($this->validate());
 
         session()->flash('success', 'تم اضافة العنصر بنجاح');
-        $this->reset();
+        $this->resetExcept('type');
 
     }
 
@@ -54,6 +69,7 @@ class SupportSection extends Component
     {
         $this->open = true;
         $this->eventName = 'store';
+        // $this->type = 'store';
     }
 
     public function update(Support $support)
@@ -63,7 +79,7 @@ class SupportSection extends Component
         }
 
         session()->flash('success','تم تحديث العنصر بنجاح');
-        $this->reset();
+        $this->resetExcept('type');
     }
 
     public function destroy(Support $support)
@@ -76,6 +92,6 @@ class SupportSection extends Component
 
     public function render()
     {
-        return view('livewire.admin.support-section', ['supports' => Support::all()]);
+        return view('livewire.admin.support-section', ['supports' => Support::where('type', $this->type)->get()]);
     }
 }

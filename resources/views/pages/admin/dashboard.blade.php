@@ -42,6 +42,8 @@
             @livewire('admin.jobs-container')
 
             @livewire('admin.support-section')
+
+            @livewire('admin.support-section', ['type' => 2])
         @endif
 
 

@@ -4,6 +4,7 @@
     <x-admin.sample-card :class="$open ? 'd-block' : 'd-none'">
         <h5 class="card-title mb-4">رابط جديد</h5>
         <form class="row algin-items-center">
+            {{-- <x-admin.input type="text" wire:model="type" /> --}}
             <div class="form-group col-md-6 col-12 mb-2">
                 <x-admin.input type="text" wire:model.defer="content" placeholder="رابط التسجيل" />
                 @error('content')
@@ -28,7 +29,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="card-title">{{ __(' روابط التسجيل في أوامر') }}</h4>
+                    <h4 class="card-title">{{ $type == 1 ? __(' روابط التسجيل في أوامر') : __('السيرة الذاتية') }}</h4>
                     <x-admin.add-button class="btn-sm btn-gradient-primary" href="javascript:void(0);"
                         wire:click="create">
                         <i class="mdi mdi-folder-plus"></i>
