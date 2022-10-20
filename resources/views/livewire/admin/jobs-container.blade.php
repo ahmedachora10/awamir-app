@@ -8,8 +8,8 @@
         @forelse($jobs as $job)
             <tr>
                 <td title="{{ $job->name }}">
-                    @if (strlen($job->name) > 60)
-                        {{ substr($job->name, 0 * 2, 60 * 2) }} ...
+                    @if (strlen($job->name) > 30)
+                        {{ str($job->name)->limit(30) }}
                     @else
                         {{ $job->name }}
                     @endif
