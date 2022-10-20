@@ -28,7 +28,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $jobs = Post::with('city','country', 'category')->latest()->get();
         return view('pages.admin.jobs.index');
     }
 
@@ -87,7 +86,6 @@ class PostController extends Controller
      */
     public function show(Post $job)
     {
-        // dd(PostStatus::PUBLISH->value);
         return view('pages.admin.jobs.show', compact('job'));
     }
 
@@ -145,9 +143,10 @@ class PostController extends Controller
 
     public function addKeywords(Request $request, Post $job)
     {
-        $job->keywords = $request->keywords;
-        $job->status = $request->status ?? PostStatus::DRAFT->value;
-        $job->save();
+        $job->update([
+            'keywords' => $request->keywords,
+            'status' => $request->status ?? PostStatus::DRAFT->value
+        ]);
 
         return redirect()->route('jobs.index')->with('success', 'تم تحديث الوظيفة بنجاح');
     }

@@ -27,8 +27,6 @@ class PostController extends Controller
 
         $cities = City::all();
 
-        // $jobs = Post::all();
-
         $jobs = Post::query();
 
         if(request()->exists('squery')) {
@@ -62,7 +60,6 @@ class PostController extends Controller
         ->addProperty('type', 'JobPosting');
         SEOTools::twitter()->setSite('@Awamirtawzif');
         SEOTools::jsonLd()->addImage($job->image);
-
 
         $viewer = Viewer::where('date',now()->format('Y-m-d'))->first();
 
