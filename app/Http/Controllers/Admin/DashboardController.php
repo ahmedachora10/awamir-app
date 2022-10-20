@@ -19,6 +19,7 @@ class DashboardController extends Controller
         $view = Viewer::get();
 
         // Daily
+        $yesterdayViews = $view->where('date', Carbon::yesterday()->format('Y-m-d'))->sum('views');
         $dailyViews = $view->where('date', Carbon::now()->format('Y-m-d'))->sum('views');
 
         // Prev Monthly
@@ -46,7 +47,7 @@ class DashboardController extends Controller
 
         return view('pages.admin.dashboard', compact(
             'popularJobs', 'monthlyViews', 'prevWeekViews', 'currentWeekViews', 'dailyViews', 'allViews', 'jobViewers',
-            'isAdmin', 'supportLinks'
+            'isAdmin', 'supportLinks', 'yesterdayViews'
         ));
     }
 }

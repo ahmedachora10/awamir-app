@@ -9,9 +9,12 @@
         @if ($isAdmin)
             <x-admin.card-info title="الزيارات اليومية" bg="bg-gradient-primary" icon="eye" :value="$dailyViews" />
 
+            <x-admin.card-info title="زيارات الامس" bg="bg-gradient-warning" icon="eye" :value="$yesterdayViews" />
+
             <x-admin.card-info title="زيارات الاسبوع الحالي" bg="bg-gradient-info" icon="eye" :value="$currentWeekViews" />
 
-            <x-admin.card-info title=" زيارات الاسبوع الماضي" bg="bg-gradient-danger" icon="eye" :value="$prevWeekViews" />
+            <x-admin.card-info title=" زيارات الاسبوع الماضي" bg="bg-gradient-danger" icon="eye"
+                :value="$prevWeekViews" />
 
             <x-admin.card-info title="زيارات الشهر الماضي" bg="bg-gradient-success" icon="eye" :value="$monthlyViews" />
 

@@ -9,5 +9,5 @@ class Support extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['content', 'time'];
+    protected $fillable = ['content', 'time', 'type'];
 }
