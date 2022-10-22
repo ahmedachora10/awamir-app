@@ -39,12 +39,14 @@ class PostController extends Controller
 
         $jobs = $jobs->get();
 
-        $images = [];
-        for ($i=0; $i < 5; $i++) {
-            $images[] = asset('storage/images/jobs/' . $jobs[$i]->image);
-        }
+        if(count($jobs) >= 5)  {
+            $images = [];
+            for ($i=0; $i < 5; $i++) {
+                $images[] = asset('storage/images/jobs/' . $jobs[$i]->image);
+            }
 
-        SEOTools::addImages($images);
+            SEOTools::addImages($images);
+        }
 
         return view('pages.web.jobs.index', compact('categories', 'cities', 'jobs'));
     }
