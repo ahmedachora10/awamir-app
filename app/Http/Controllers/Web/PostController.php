@@ -27,7 +27,7 @@ class PostController extends Controller
 
         $cities = City::all();
 
-        $jobs = Post::query();
+        $jobs = Post::published();
 
         if(request()->exists('squery')) {
             $jobs->where('name', 'like', "%".request('squery')."%");
@@ -37,7 +37,7 @@ class PostController extends Controller
             $jobs->where('category_id', request('category'));
         }
 
-        $jobs = $jobs->get();
+        $jobs = $jobs->latest()->get();
 
         if(count($jobs) >= 5)  {
             $images = [];
@@ -89,25 +89,29 @@ class PostController extends Controller
 
     public function loadJobs(Request $request)
     {
-        $jobs = Post::published();
+        return 1;
 
-        if($request->exists('category') && !is_null($request->category)) {
-            $jobs->where('category_id', $request->category);
-        }
+        // $jobs = Post::published();
 
-        if($request->exists('city') && !is_null($request->city)) {
-            $jobs->where('city_id', $request->city);
-        }
+        // if($request->exists('category') && !is_null($request->category)) {
+        //     $jobs->where('category_id', $request->category);
+        // }
 
-        if($request->exists('type') && !is_null($request->type) && $request->type == 'imp') {
-            $jobs = $jobs->whereMonth('updated_at', date('m'))
-            ->whereYear('updated_at', date('Y'))
-            ->orderByDesc('views')->paginate(8);
-        } else {
-            $jobs = $jobs->orderByDesc('id')->paginate(8);
-        }
+        // if($request->exists('city') && !is_null($request->city)) {
+        //     $jobs->where('city_id', $request->city);
+        // }
 
-        return view('components.web.job-container', compact('jobs'));
+        // if($request->exists('type') && !is_null($request->type) && $request->type == 'imp') {
+        //     $jobs = $jobs->whereMonth('updated_at', date('m'))
+        //     ->whereYear('updated_at', date('Y'))
+        //     ->orderByDesc('views')->paginate(8);
+        // } else {
+        //     $jobs = $jobs->orderByDesc('id');
+        // }
+
+        // $jobs = $jobs->latest()->paginate(8);
+
+        // return view('components.web.job-container', compact('jobs'));
 
     }
 

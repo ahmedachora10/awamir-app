@@ -82,14 +82,16 @@
 
     @include('layouts.web.footer')
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> --}}
+
+    <script type="text/javascript" src="{{ asset('js/web/jquery.js') }}"></script>
     <script type="text/javascript" src=" {{ asset('js/web/bootstrap_5.0.1.js') }}"></script>
 
     {{-- @vite('resources/js/app.js') --}}
 
 
-    <script>
+    <script defer>
         // get date
         var date = new Date();
         var date2 = new Date().toLocaleDateString('ar-SA');
