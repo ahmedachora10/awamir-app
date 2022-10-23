@@ -37,7 +37,7 @@ class PostController extends Controller
             $jobs->where('category_id', request('category'));
         }
 
-        $jobs = $jobs->latest()->get();
+        $jobs = $jobs->latest()->paginate(10);
 
         if(count($jobs) >= 5)  {
             $images = [];
@@ -89,29 +89,27 @@ class PostController extends Controller
 
     public function loadJobs(Request $request)
     {
-        return 1;
+        $jobs = Post::published();
 
-        // $jobs = Post::published();
+        if($request->exists('category') && !is_null($request->category)) {
+            $jobs->where('category_id', $request->category);
+        }
 
-        // if($request->exists('category') && !is_null($request->category)) {
-        //     $jobs->where('category_id', $request->category);
-        // }
+        if($request->exists('city') && !is_null($request->city)) {
+            $jobs->where('city_id', $request->city);
+        }
 
-        // if($request->exists('city') && !is_null($request->city)) {
-        //     $jobs->where('city_id', $request->city);
-        // }
+        if($request->exists('type') && !is_null($request->type) && $request->type == 'imp') {
+            $jobs = $jobs->whereMonth('updated_at', date('m'))
+            ->whereYear('updated_at', date('Y'))
+            ->orderByDesc('views')->paginate(8);
+        } else {
+            $jobs = $jobs->orderByDesc('id');
+        }
 
-        // if($request->exists('type') && !is_null($request->type) && $request->type == 'imp') {
-        //     $jobs = $jobs->whereMonth('updated_at', date('m'))
-        //     ->whereYear('updated_at', date('Y'))
-        //     ->orderByDesc('views')->paginate(8);
-        // } else {
-        //     $jobs = $jobs->orderByDesc('id');
-        // }
+        $jobs = $jobs->latest()->paginate(8);
 
-        // $jobs = $jobs->latest()->paginate(8);
-
-        // return view('components.web.job-container', compact('jobs'));
+        return view('components.web.job-container', compact('jobs'));
 
     }
 
