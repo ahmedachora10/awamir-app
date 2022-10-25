@@ -70,7 +70,9 @@
             </div><!-- End Job Types -->
 
             <div class="col-12 form-group">
-                <textarea name="description" id="description" class="col-12">{{ old('description') }}</textarea>
+                {{-- <x-editor /> --}}
+                {{-- <div class="description place "  id="output"  contenteditable="true">{!! $job->description !!}</div><br> --}}
+                <textarea name="description" id="description" class="col-12 description" dir="ltr">{{ old('description') }}</textarea>
                 <x-admin.error field="description" />
             </div>
 
@@ -153,6 +155,7 @@
             };
 
             countries.change(selectCities);
+
 
             tinymce.init({
                 selector: '#description',
