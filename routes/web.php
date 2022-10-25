@@ -66,7 +66,7 @@ Route::controller(PostController::class)->prefix('jobs')->name('web.jobs.')->gro
 
     Route::get('{job}', 'show')->name('show');
 
-    Route::get('load', 'loadJobs')->name('load');
+    Route::get('load/more', 'loadMoreJobs')->name('load');
 
     Route::get('filter', 'filter')->name('filter');
 

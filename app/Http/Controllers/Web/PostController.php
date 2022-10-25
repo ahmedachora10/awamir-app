@@ -87,7 +87,7 @@ class PostController extends Controller
         return view('pages.web.jobs.show', compact('job', 'relatedJobs'));
     }
 
-    public function loadJobs(Request $request)
+    public function loadMoreJobs(Request $request)
     {
         $jobs = Post::published();
 
@@ -100,14 +100,14 @@ class PostController extends Controller
         }
 
         if($request->exists('type') && !is_null($request->type) && $request->type == 'imp') {
-            $jobs = $jobs->whereMonth('updated_at', date('m'))
+            $jobs->whereMonth('updated_at', date('m'))
             ->whereYear('updated_at', date('Y'))
-            ->orderByDesc('views')->paginate(8);
+            ->orderByDesc('views');
         } else {
-            $jobs = $jobs->orderByDesc('id');
+            $jobs = $jobs->latest();
         }
 
-        $jobs = $jobs->latest()->paginate(8);
+        $jobs = $jobs->paginate(8);
 
         return view('components.web.job-container', compact('jobs'));
 

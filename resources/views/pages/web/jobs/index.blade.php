@@ -163,7 +163,6 @@
 
 
             // load more jobs
-
             var page = 2;
             $('.more').click(function() {
                 $('.sp-load').fadeIn();
@@ -178,25 +177,29 @@
                     method: 'get',
                     url: "{{ route('web.jobs.load') }}?page=" + page + "&category=" + $('.ff2').attr("id") +
                         "&city=" + $('.ff3').attr("id") + "&type=" + $('.ff1').attr("id"),
-                }).done(function(response) {
-                    if (response == '') {
-                        $('.more').hide();
+
+                    success: function(response) {
+                        if (response == '') {
+                            $('.more').hide();
+                        }
+                        page++;
+                        $('.sp-load').hide();
+                        $(".loaded-jobs").append(response);
+                        $('.more').prop("disabled", false);
                     }
-                    page++;
-                    $('.sp-load').hide();
-                    $(".loaded-jobs").append(response);
-                    $('.more').prop("disabled", false);
                 });
             });
 
-
-            //filter
+            //filter (important | new)
             $('.ff1').click(function() {
                 $('.order1').fadeToggle(100);
             });
+
+            // Category
             $('.ff2').click(function() {
                 $('.order2').fadeToggle(100);
             });
+
             $('.ff3').click(function() {
                 $('.order3').fadeToggle(100);
             });
@@ -220,23 +223,24 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                     }
                 });
-                ajax({
+                $.ajax({
                     method: 'get',
                     url: "{{ route('web.jobs.load') }}",
                     data: {
                         type: type,
                         category: category,
                         city: city
-                    }
-                }).done(function(response) {
-                    $('.load-sp2').fadeOut(100);
-                    if (response == '') {
-                        $('.more').hide();
-                    }
+                    },
+                    success: function(response) {
+                        $('.load-sp2').fadeOut(100);
+                        if (response == '') {
+                            $('.more').hide();
+                        }
 
-                    $('.sp-load2').hide();
-                    $(".loaded-jobs").html('');
-                    $('.jobs-j').html(response);
+                        $('.sp-load2').hide();
+                        $(".loaded-jobs").html('');
+                        $('.jobs-j').html(response);
+                    }
                 });
             }
 
@@ -251,28 +255,30 @@
                 var category = $('.ff2').attr("id");
                 var city = $('.ff3').attr("id");
                 $('.load-sp2').fadeIn(100);
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                     }
                 });
-                ajax({
+                $.ajax({
                     method: 'get',
                     url: "{{ route('web.jobs.load') }}",
                     data: {
                         type: type,
                         category: category,
                         city: city
-                    }
-                }).done(function(response) {
-                    $('.load-sp2').fadeOut(100);
-                    if (response == '') {
-                        $('.more').hide();
-                    }
+                    },
+                    success: function(response) {
+                        $('.load-sp2').fadeOut(100);
+                        if (response == '') {
+                            $('.more').hide();
+                        }
 
-                    $('.sp-load2').hide();
-                    $(".loaded-jobs").html('');
-                    $('.jobs-j').html(response);
+                        $('.sp-load2').hide();
+                        $(".loaded-jobs").html('');
+                        $('.jobs-j').html(response);
+                    }
                 });
 
             }
