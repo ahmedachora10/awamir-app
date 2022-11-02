@@ -65,6 +65,8 @@
 
     {{-- @vite('resources/css/app.css') --}}
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3651563288066981"
+        crossorigin="anonymous"></script>
 
     <!-- Scripts -->
     {!! settings('google_scripts') !!}

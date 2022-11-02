@@ -121,6 +121,13 @@
                             target="blank"><i class="bi bi-telegram"></i></a>
                     </div>
 
+                    {{-- Join us on Whatsapp Group --}}
+                    <div class="share">
+                        <div class="w-100 bg-primary" style="height: 200px">
+
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
