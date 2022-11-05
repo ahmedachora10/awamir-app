@@ -33,11 +33,12 @@ class HomeController extends Controller
 
         SEOTools::setTitle(' الرئيسية');
 
-        $latestJobs = Post::published()->where('created_at', '>=', now()->subDays(2)->format('Y-m-d H:i:s'))->latest()->take(10)->get();
+        $latestJobs = Post::published()->latest()->take(10)->get();
 
-        $importantJobs = Post::published()->where('created_at', '<', now()->subDays(2)->format('Y-m-d H:i:s'))
-        ->where('created_at', '>=', now()->subDays(10)->format('Y-m-d H:i:s'))
-        ->orderBy('views')->take(10)->get();
+        // ->where('created_at', '<', now()->subDays(2)->format('Y-m-d H:i:s'))
+        // ->where('created_at', '>=', now()->subDays(10)->format('Y-m-d H:i:s'))
+
+        $importantJobs = Post::published()->orderByDesc('views')->take(10)->get();
 
         $categories = Category::all();
 
