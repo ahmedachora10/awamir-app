@@ -5,7 +5,7 @@
             now()->subDays(2)->format('Y-m-d H:i:s') && $status == 'new')
             <span class="position-absolute bar new-jobs">جديد </span>
         @elseif($job->created_at >=
-            now()->subDays(10)->format('Y-m-d H:i:s') &&
+            now()->subDays(14)->format('Y-m-d H:i:s') &&
             $job->created_at <
                 now()->subDays(2)->format('Y-m-d H:i:s') &&
             $status == 'important')
