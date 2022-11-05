@@ -35,10 +35,13 @@ class HomeController extends Controller
 
         $latestJobs = Post::published()->latest()->take(10)->get();
 
-        // ->where('created_at', '<', now()->subDays(2)->format('Y-m-d H:i:s'))
-        // ->where('created_at', '>=', now()->subDays(10)->format('Y-m-d H:i:s'))
+        //
+        //
 
-        $importantJobs = Post::published()->orderByDesc('views')->take(10)->get();
+        $importantJobs = Post::published()
+        ->where('created_at', '<', now()->subDays(2)->format('Y-m-d H:i:s'))
+        ->where('created_at', '>=', now()->subDays(14)->format('Y-m-d H:i:s'))
+        ->orderByDesc('views')->take(10)->get();
 
         $categories = Category::all();
 
