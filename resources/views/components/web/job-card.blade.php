@@ -8,7 +8,7 @@
             now()->subDays(10)->format('Y-m-d H:i:s') &&
             $job->created_at <
                 now()->subDays(2)->format('Y-m-d H:i:s') &&
-            $status == 'imp')
+            $status == 'important')
             <span class="position-absolute bar important-jobs">رائج</span>
         @endif
 
