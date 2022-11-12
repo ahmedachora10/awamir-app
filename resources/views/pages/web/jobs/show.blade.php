@@ -125,7 +125,7 @@
 
                     </div>
 
-                    <div id="share">
+                    {{-- <div id="share">
                         <h4><i class="bi bi-people-fill"></i> شارك الخبر ليتسفيد الجميع </h4>
                         <!-- twitter -->
                         <a class="twitter"
@@ -139,7 +139,7 @@
                         <a style='background-color:rgb(53, 157, 218)'
                             href="https://t.me/share/url?url={{ $url }}&text={{ $title }}"
                             target="blank"><i class="bi bi-telegram"></i></a>
-                    </div>
+                    </div> --}}
 
                     {{-- Join us on Whatsapp Group --}}
                     @includeIf('partials.join-us')
