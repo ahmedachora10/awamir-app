@@ -36,7 +36,7 @@
 
         @media (max-width: 648px) {
             #join-us-btn {
-                bottom: -7pxpx;
+                bottom: -7px;
                 transform: translateX(50%)
             }
 
