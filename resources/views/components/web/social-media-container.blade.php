@@ -8,7 +8,7 @@
         قناة التليجرام
     </x-web.social-media-button>
 
-    <x-web.social-media-button media="whatsapp">
+    <x-web.social-media-button media="whatsapp_group">
         <i class="bi bi-whatsapp  ms-2"></i>
         قروب وظائف
     </x-web.social-media-button>
