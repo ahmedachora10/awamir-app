@@ -20,6 +20,11 @@
         </center>
     </div>
 
+    <div class="mt-5 pt-4 mb-4">
+        <center>
+            <x-web.special-posts />
+        </center>
+    </div>
 
     <div class="main2 mt-4">
         <center>

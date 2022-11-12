@@ -2,6 +2,9 @@
 
 namespace App\Console;
 
+use App\Jobs\ChangeRegisterCvLinks;
+use App\Jobs\ChangeRegisterThroughAwamirLinks;
+use App\Jobs\ChangeSocialMediaPlatform;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,6 +19,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        $schedule->call(new ChangeSocialMediaPlatform)->everyMinute();
+        $schedule->call(new ChangeRegisterThroughAwamirLinks)->everyMinute();
+        $schedule->call(new ChangeRegisterCvLinks)->everyMinute();
     }
 
     /**

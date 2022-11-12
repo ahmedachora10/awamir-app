@@ -30,7 +30,6 @@ class HomeController extends Controller
 
     public function index()
     {
-
         SEOTools::setTitle(' الرئيسية');
 
         $latestJobs = Post::published()->latest()->take(10)->get();

@@ -35,6 +35,13 @@ class JobsContainer extends Component
         $this->resetPage();
     }
 
+    public function makeSpecial(Post $post)
+    {
+        if($post) {
+            $post->update(['special' => $post->special ? false : true]);
+        }
+    }
+
     public function render()
     {
         return view('livewire.admin.jobs-container', [

@@ -3,12 +3,16 @@
     <x-admin.input type="search" wire:keydown.debounce.500ms="filter" wire:model="search" name="search"
         placeholder="البحث" class="rounded" />
 
-    <x-admin.table title="كل الوظائف" icon="folder-plus" :route="route('jobs.create')" :columns="['name', 'الدولة - المدينة', 'الفئة', 'الزيارات', 'الحالة', 'تاريح الاظافة', 'actions']">
+    <x-admin.table title="كل الوظائف" icon="folder-plus" :route="route('jobs.create')" :columns="[' ', 'العنوان', 'الدولة - المدينة', 'الفئة', 'الزيارات', 'الحالة', 'تاريح الاظافة', 'actions']">
 
         @forelse($jobs as $job)
             <tr>
+                <td>
+                    <input class="form-check-input" type="checkbox" wire:change="makeSpecial({{ $job->id }})"
+                        id="special" name="special" @checked($job->special)>
+                </td>
                 <td title="{{ $job->name }}">
-                    @if (strlen($job->name) > 30)
+                    @if (mb_strlen($job->name) > 30)
                         {{ str($job->name)->limit(30) }}
                     @else
                         {{ $job->name }}
@@ -17,8 +21,8 @@
                 <td title="{{ $job->country->name }} - {{ $job->city->name }}">
                     <label class="badge fw-bold badge-gradient-primary">
                         {{ $job->country->name }} -
-                        @if (strlen($job->city->name) > 15)
-                            {{ substr($job->city->name, 0 * 2, 15 * 2) }} ...
+                        @if (mb_strlen($job->city->name) > 15)
+                            {{ str($job->city->name)->limit(15) }}
                         @else
                             {{ $job->city->name }}
                         @endif

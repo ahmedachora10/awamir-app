@@ -1,19 +1,21 @@
 <?php
 
-namespace App\View\Components\Web;
+namespace App\View\Components;
 
+use App\Models\SocialMedia;
 use Illuminate\View\Component;
 
-class Telegram extends Component
+class SocialMediaPlateforme extends Component
 {
-
+    public $media;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(public $link = '#')
+    public function __construct()
     {
+        $this->media = SocialMedia::publeshed()->first();
     }
 
     /**
@@ -23,6 +25,6 @@ class Telegram extends Component
      */
     public function render()
     {
-        return view('components.web.telegram');
+        return view('components.social-media-plateforme');
     }
 }

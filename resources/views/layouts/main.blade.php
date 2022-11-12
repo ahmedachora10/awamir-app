@@ -80,7 +80,7 @@
 
     {{ $slot }}
 
-    <x-web.telegram />
+    <x-social-media-plateforme />
 
     @include('layouts.web.footer')
 

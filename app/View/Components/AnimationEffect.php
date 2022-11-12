@@ -1,19 +1,19 @@
 <?php
 
-namespace App\View\Components\Web;
+namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Telegram extends Component
+class AnimationEffect extends Component
 {
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(public $link = '#')
+    public function __construct()
     {
+        //
     }
 
     /**
@@ -23,6 +23,6 @@ class Telegram extends Component
      */
     public function render()
     {
-        return view('components.web.telegram');
+        return view('components.animation-effect');
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Post;
+use App\Models\SocialMedia;
 use App\Models\Subscriber;
 use App\Models\Support;
 use App\Models\Viewer;

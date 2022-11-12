@@ -2,18 +2,19 @@
 
 namespace App\View\Components\Web;
 
+use App\Models\Post;
 use Illuminate\View\Component;
 
-class Telegram extends Component
+class SpecialPosts extends Component
 {
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(public $link = '#')
+    public function __construct(public $jobs = [])
     {
+        $this->jobs = Post::special()->take(4)->get();
     }
 
     /**
@@ -23,6 +24,6 @@ class Telegram extends Component
      */
     public function render()
     {
-        return view('components.web.telegram');
+        return view('components.web.special-posts');
     }
 }

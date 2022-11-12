@@ -12,6 +12,10 @@
             <div class="main">
                 <x-web.social-media-container />
 
+                <div class="my-4">
+                    <x-web.special-posts />
+                </div>
+
                 <div class="tab mt-5 position-relative overflow-hidden">
 
                     @if ($job->created_at >=
@@ -62,46 +66,62 @@
                         <br>
 
 
-                        @if (!empty($job->register_through_awamir))
-                            <a href='{{ $job->register_through_awamir }}' target='_blank'>
-                                <button class="btn_job"
-                                    style="background-color:{{ settings('register_through_awamir_bg') }} ;">تسجيل
-                                    عبر
-                                    الواتساب <i class="bi bi-whatsapp"></i>
-                                </button>
-                            </a>
-                        @endif
+                        <div class="d-flex flex-wrap align-items-center justify-content-center">
 
-                        @if (!empty($job->cv))
-                            <a href='{{ $job->cv }}'><button class="btn_job"
-                                    style="background-color:{{ settings('cv_bg') }} ;"> أطلب سيرة ذاتية<i
-                                        class="bi bi-file-earmark-person"></i> </button></a>
-                        @endif
+                            @if (!empty($job->register_through_awamir))
+                                <x-animation-effect>
+                                    <a href='{{ $job->register_through_awamir }}' target='_blank'>
+                                        <button class="btn_job"
+                                            style="background-color:{{ settings('register_through_awamir_bg') }} ;">
+                                            <i class="bi bi-whatsapp ms-2"></i>
+                                            تسجيل عبر الواتساب
+                                        </button>
+                                    </a>
+                                </x-animation-effect>
+                            @endif
 
-                        {{-- 'whatsapp://send?text=*{{$job->title}}* %20%0A رابط التقديم: {{$url}} %20%0A من قروب أوامر توظيف :
-                        {{ $variables->where("type" , "social")->where("name", "tel")->first()->content }}' --}}
+                            @if (!empty($job->cv))
+                                <x-animation-effect>
+                                    <a href='{{ $job->cv }}'>
+                                        <button class="btn_job" style="background-color:{{ settings('cv_bg') }} ;">
+                                            <i class="bi bi-file-earmark-person ms-2"></i>
+                                            أطلب سيرة ذاتية
+                                        </button>
+                                    </a>
+                                </x-animation-effect>
+                            @endif
 
-                        @if (!empty($job->whatsapp))
-                            <a
-                                href="whatsapp://send?text=*{{ $job->name }}* %20%0A رابط التقديم: {{ route('web.jobs.show', $job) }} : %20%0A من قروب أوامر توظيف : {{ settings('telegram') }}">
-                                <button class="btn_job" style="background-color:{{ settings('whatsapp_share_bg') }} ">
-                                    <i class="bi bi-whatsapp"></i> مشاركة عبر واتساب
-                                </button>
-                            </a>
-                        @endif
+                            {{-- 'whatsapp://send?text=*{{$job->title}}* %20%0A رابط التقديم: {{$url}} %20%0A من قروب أوامر توظيف :
+                            {{ $variables->where("type" , "social")->where("name", "tel")->first()->content }}' --}}
 
-                        @if (!empty($job->submission))
-                            <a href='{{ $job->submission }}'><button class="btn_job"
-                                    style="background-color : {{ settings('apply_bg') }} ;"> <i
-                                        class="bi bi-link-45deg"></i> رابط التقديم </button></a>
-                        @endif
+                            @if (!empty($job->whatsapp))
+                                <a
+                                    href="whatsapp://send?text=*{{ $job->name }}* %20%0A رابط التقديم: {{ route('web.jobs.show', $job) }} : %20%0A من قروب أوامر توظيف : {{ settings('telegram') }}">
+                                    <button class="btn_job"
+                                        style="background-color:{{ settings('whatsapp_share_bg') }} ">
+                                        <i class="bi bi-whatsapp ms-2"></i> مشاركة عبر واتساب
+                                    </button>
+                                </a>
+                            @endif
 
-                        @if (!empty($job->source))
-                            <a href='{{ $job->source }}'><button class="btn_job"
-                                    style="background-color:{{ settings('source_bg') }} ;">المصدر <i
-                                        class="bi bi-folder-symlink"></i></button></a>
-                        @endif
+                            @if (!empty($job->submission))
+                                <a href='{{ $job->submission }}'>
+                                    <button class="btn_job" style="background-color : {{ settings('apply_bg') }} ;"> <i
+                                            class="bi bi-link-45deg ms-2"></i> رابط التقديم
+                                    </button>
+                                </a>
+                            @endif
 
+                            @if (!empty($job->source))
+                                <a href='{{ $job->source }}'>
+                                    <button class="btn_job" style="background-color:{{ settings('source_bg') }} ;">
+                                        <i class="bi bi-folder-symlink ms-2"></i>
+                                        المصدر
+                                    </button>
+                                </a>
+                            @endif
+
+                        </div>
 
                     </div>
 
@@ -122,13 +142,9 @@
                     </div>
 
                     {{-- Join us on Whatsapp Group --}}
-                    <div class="share">
-                        <div class="w-100 bg-primary" style="height: 200px">
-
-                        </div>
-                    </div>
-
+                    @includeIf('partials.join-us')
                 </div>
+
 
             </div>
             <div class="side">

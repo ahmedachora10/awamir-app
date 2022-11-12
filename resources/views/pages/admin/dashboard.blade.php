@@ -44,6 +44,8 @@
             @livewire('admin.support-section')
 
             @livewire('admin.support-section', ['type' => 2])
+
+            @livewire('admin.social-media-container')
         @endif
 
 

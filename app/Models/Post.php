@@ -18,12 +18,18 @@ class Post extends Model
         'company', 'views', 'source',
         'status', 'url', 'keywords',
         'tls', 'cv', 'whatsapp',
-        'submission', 'register_through_awamir'
+        'submission', 'register_through_awamir',
+        'special'
     ];
 
     public function scopePublished($query)
     {
         $query->where('status', PostStatus::PUBLISH->value);
+    }
+
+    public function scopeSpecial($query)
+    {
+        $query->where('special', true);
     }
 
     public function category()
