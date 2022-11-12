@@ -16,40 +16,42 @@
                     <x-web.special-posts />
                 </div>
 
-                <div class="tab mt-5 position-relative overflow-hidden">
+                <div class="tab mt-5 pt-0">
 
-                    @if ($job->created_at >=
-                        now()->subDays(2)->format('Y-m-d H:i:s'))
-                        <span class="position-absolute bar new-jobs">جديد </span>
-                    @elseif($job->created_at >=
-                        now()->subDays(14)->format('Y-m-d H:i:s') &&
-                        $job->created_at <
+                    <div class="position-relative overflow-hidden pt-3">
+                        @if ($job->created_at >=
                             now()->subDays(2)->format('Y-m-d H:i:s'))
-                        <span class="position-absolute bar important-jobs">رائج</span>
-                    @endif
+                            <span class="position-absolute bar new-jobs">جديد </span>
+                        @elseif($job->created_at >=
+                            now()->subDays(14)->format('Y-m-d H:i:s') &&
+                            $job->created_at <
+                                now()->subDays(2)->format('Y-m-d H:i:s'))
+                            <span class="position-absolute bar important-jobs">رائج</span>
+                        @endif
 
-                    <div class="sd1">
-                        <img src="{{ asset('storage/images/jobs/' . $job->image) }}" />
-                    </div>
-
-                    <div class="sd2 ps-3">
-                        <h2>{{ $job->name }}</h2>
-                        <h3><i class="bi bi-building"></i> &nbsp; {{ $job->company }}</h3>
-                    </div>
-
-                    <div class="info">
-                        <div class="inf">
-                            <i class="bi bi-clock-fill"></i>
-                            &nbsp;
-                            <div style="display: inline-table;">{{ $job->created_at->diffForHumans() }}</div>
+                        <div class="sd1">
+                            <img src="{{ asset('storage/images/jobs/' . $job->image) }}" />
                         </div>
-                        <div class="inf">
-                            <i class="bi bi-briefcase-fill"></i>
-                            {{ $job->jobType->name }}
+
+                        <div class="sd2 ps-3">
+                            <h2>{{ $job->name }}</h2>
+                            <h3><i class="bi bi-building"></i> &nbsp; {{ $job->company }}</h3>
                         </div>
-                        <div class="inf">
-                            <i class="bi bi-geo-alt-fill"></i>
-                            {{ $job->city->name }}
+
+                        <div class="info">
+                            <div class="inf">
+                                <i class="bi bi-clock-fill"></i>
+                                &nbsp;
+                                <div style="display: inline-table;">{{ $job->created_at->diffForHumans() }}</div>
+                            </div>
+                            <div class="inf">
+                                <i class="bi bi-briefcase-fill"></i>
+                                {{ $job->jobType->name }}
+                            </div>
+                            <div class="inf">
+                                <i class="bi bi-geo-alt-fill"></i>
+                                {{ $job->city->name }}
+                            </div>
                         </div>
                     </div>
 

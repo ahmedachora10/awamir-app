@@ -36,15 +36,15 @@
         }
 
         /* .wrap>a:hover,
-                                    .wrap>a:focus {
-                                        color: #313133;
-                                        transform: translateY(-6px);
-                                    }
+                                            .wrap>a:focus {
+                                                color: #313133;
+                                                transform: translateY(-6px);
+                                            }
 
-                                    .wrap>a:hover::before,
-                                    .wrap>a:focus::before {
-                                        opacity: 1;
-                                    } */
+                                            .wrap>a:hover::before,
+                                            .wrap>a:focus::before {
+                                                opacity: 1;
+                                            } */
 
         .wrap>a:hover,
         .wrap>a:focus,
@@ -81,8 +81,8 @@
             }
 
             100% {
-                width: 250px;
-                height: 250px;
+                width: 210px;
+                height: 210px;
                 opacity: 0;
             }
         }
