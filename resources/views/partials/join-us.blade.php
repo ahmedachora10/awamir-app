@@ -8,8 +8,8 @@
                 <a href="{{ settings('whatsapp_group') }}" target='_blank'>
                     <button class="btn_job py-4"
                         style="background-color:{{ settings('register_through_awamir_bg') }} ;">
-                        <i class="bi bi-whatsapp ms-2"></i>
-                        اضغط هنا للانظمام
+                        اضغط هنا للأنضمام
+                        <i class="bi bi-whatsapp me-2"></i>
                     </button>
                 </a>
             </x-animation-effect>
