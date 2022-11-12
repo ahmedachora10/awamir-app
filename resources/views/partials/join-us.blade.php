@@ -31,6 +31,7 @@
             box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
             width: 350px;
             border-radius: 120px;
+            font-size: 14px !important;
         }
 
         @media (max-width: 648px) {
