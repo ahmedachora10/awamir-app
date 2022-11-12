@@ -35,8 +35,8 @@
 
         @media (max-width: 648px) {
             #join-us-btn {
-                bottom: -30px;
-                transform: translateX(58%)
+                bottom: -7pxpx;
+                transform: translateX(50%)
             }
 
             #join-us-btn button {
@@ -75,7 +75,7 @@
         }
 
         if (screenWidth < 779) {
-            applyChanges('mobile');
+            applyChanges();
         } else {
             applyChanges();
         }
