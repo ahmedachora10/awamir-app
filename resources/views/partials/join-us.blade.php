@@ -54,8 +54,10 @@
             }
 
             #join-us-btn button {
-                font-size: 12px !important;
-                width: 166px;
+                font-size: 10px !important;
+                width: 146px;
+                padding-top: 7px !important;
+                padding-bottom: 7px !important;
             }
         }
     </style>

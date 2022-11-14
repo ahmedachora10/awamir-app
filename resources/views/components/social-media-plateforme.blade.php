@@ -2,8 +2,8 @@
     <x-web.telegram :link="$media->link" />
 @elseif ($media && $media->type->value == App\Http\Helpers\SocialMediaType::WHATSAPP->value)
     <a href="{{ $media->link }}">
-        <div class="fixed-icon shadow">
-            <i class="bi bi-whatsapp text-success"></i>
+        <div class="fixed-icon shadow bg-success">
+            <i class="bi bi-whatsapp text-white"></i>
         </div>
     </a>
 @endif

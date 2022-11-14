@@ -73,10 +73,10 @@
                             @if (!empty($job->register_through_awamir))
                                 <x-animation-effect>
                                     <a href='{{ $job->register_through_awamir }}' target='_blank'>
-                                        <button class="btn_job"
+                                        <button class="btn_job px-2"
                                             style="background-color:{{ settings('register_through_awamir_bg') }} ;">
                                             <i class="bi bi-whatsapp ms-2"></i>
-                                            تسجيل عبر الواتساب
+                                            التسجيل عبر (أوامر توظيف)
                                         </button>
                                     </a>
                                 </x-animation-effect>
