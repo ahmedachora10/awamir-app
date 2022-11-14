@@ -31,7 +31,7 @@
             box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
             width: 350px;
             border-radius: 120px;
-            font-size: 14px !important;
+            /* font-size: 14px !important; */
         }
 
         @media (max-width: 648px) {
@@ -44,6 +44,18 @@
                 padding-top: 10px !important;
                 padding-bottom: 10px !important;
                 width: 204px;
+                font-size: 12px !important;
+            }
+        }
+
+        @media (max-width: 350px) {
+            #join-us-btn {
+                bottom: -14px;
+            }
+
+            #join-us-btn button {
+                font-size: 12px !important;
+                width: 166px;
             }
         }
     </style>
@@ -55,11 +67,11 @@
 
         const joinUsImages = {
             mobile: {
-                image: "{{ asset('images/web/join-us-mobile.jpg') }}",
+                image: "{{ asset('images/web/join-us-mobile.png') }}",
                 height: '290px'
             },
             desktop: {
-                image: "{{ asset('images/web/join-us.jpg') }}",
+                image: "{{ asset('images/web/join-us-mobile.png') }}",
                 height: '390px'
             },
         };
