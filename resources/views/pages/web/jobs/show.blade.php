@@ -7,6 +7,54 @@
         <meta property="og:image" content="{{ asset('storage/images/jobs/' . $job->image) }}">
     @endpush
 
+    @php
+        if ($job->jobType->name == 'دوام كلي'):
+            $type = 'FULL_TIME';
+        elseif ($job->jobType->name == 'دوام جزئي'):
+            $type = 'PART_TIME';
+        elseif ($job->jobType->name == 'اتفاقية'):
+            $type = 'CONTRACTOR';
+        elseif ($job->jobType->name == 'مؤقت'):
+            $type = 'TEMPORARY';
+        elseif ($job->jobType->name == 'تدريب'):
+            $type = 'INTERN';
+        elseif ($job->jobType->name == 'تطوع'):
+            $type = 'VOLUNTEER';
+        elseif ($job->jobType->name == 'آخر '):
+            $type = 'OTHER';
+        else:
+            $type = 'OTHER';
+        endif;
+
+    @endphp
+
+    @push('scripts')
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org/",
+                "@type": "JobPosting",
+                "title": "{{$job->name}}",
+
+                "description": "{{strip_tags($job->description)}}",
+                "datePosted": "{{$job->created_at}}",
+                "employmentType": "{{$type}}",
+                "hiringOrganization": {
+                    "@type": "Organization",
+                    "name": "{{$job->company}}",
+                    "logo": "{{ asset('storage/images/jobs/' . $job->image) }}"
+                },
+                "jobLocation": {
+                    "@type": "Place",
+                    "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "{{$job->city->name}}",
+                    "addressCountry": "{{$job->country->name}}"
+                    }
+                }
+            }
+        </script>
+    @endpush
+
     <center>
         <div style="position :relative">
             <div class="main">

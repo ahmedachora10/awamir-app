@@ -57,11 +57,11 @@ class PostController extends Controller
         abort_if(!auth()->check() && $job->status == PostStatus::DRAFT->value, 404);
 
         SEOTools::setTitle($job->name)
-        ->setDescription($job->description)
-        ->opengraph()->setUrl(route('web.jobs.show', $job))
-        ->addProperty('type', 'JobPosting');
-        SEOTools::twitter()->setSite('@Awamirtawzif');
-        SEOTools::jsonLd()->addImage($job->image);
+        ->setDescription(strip_tags($job->description));
+        // ->opengraph()->setUrl(route('web.jobs.show', $job))
+        // ->addProperty('type', 'JobPosting');
+        // SEOTools::twitter()->setSite('@Awamirtawzif');
+        // SEOTools::jsonLd()->addImage($job->image);
 
         $viewer = Viewer::where('date',now()->format('Y-m-d'))->first();
 
