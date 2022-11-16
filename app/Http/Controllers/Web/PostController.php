@@ -19,8 +19,8 @@ class PostController extends Controller
 
         SEOTools::setTitle('كل الوظائف')
         ->setDescription(settings('site_description'))
-        ->opengraph()->setUrl(route('web.jobs.index'))
-        ->addProperty('type', 'JobPosting');
+        ->opengraph()->setUrl(route('web.jobs.index'));
+        // ->addProperty('type', 'JobPosting');
         SEOTools::twitter()->setSite('@Awamirtawzif');
 
         $categories = Category::all();
@@ -39,14 +39,14 @@ class PostController extends Controller
 
         $jobs = $jobs->latest()->paginate(10);
 
-        if(count($jobs) >= 5)  {
-            $images = [];
-            for ($i=0; $i < 5; $i++) {
-                $images[] = asset('storage/images/jobs/' . $jobs[$i]->image);
-            }
+        // if(count($jobs) >= 5)  {
+        //     $images = [];
+        //     for ($i=0; $i < 5; $i++) {
+        //         $images[] = asset('storage/images/jobs/' . $jobs[$i]->image);
+        //     }
 
-            SEOTools::addImages($images);
-        }
+        //     SEOTools::addImages($images);
+        // }
 
         return view('pages.web.jobs.index', compact('categories', 'cities', 'jobs'));
     }
