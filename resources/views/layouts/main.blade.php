@@ -11,10 +11,12 @@
     {{-- {!! SEOMeta::generate() !!} --}}
 
     <!-- MINIFIED -->
-    {!! SEO::generate() !!}
-
+    {{-- {!! SEO::generate() !!} --}}
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
     <!-- LUMEN -->
-    {!! app('seotools')->generate() !!}
+    {{-- {!! app('seotools')->generate() !!} --}}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap" rel="stylesheet">
