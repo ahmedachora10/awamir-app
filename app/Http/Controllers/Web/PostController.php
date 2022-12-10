@@ -57,7 +57,7 @@ class PostController extends Controller
         abort_if(!auth()->check() && $job->status == PostStatus::DRAFT->value, 404);
 
         SEOTools::setTitle($job->name)
-        ->setDescription(strip_tags($job->description));
+        ->setDescription($job->name . ' ' . str(strip_tags($job->description))->limit(100));
         // ->opengraph()->setUrl(route('web.jobs.show', $job))
         // ->addProperty('type', 'JobPosting');
         // SEOTools::twitter()->setSite('@Awamirtawzif');

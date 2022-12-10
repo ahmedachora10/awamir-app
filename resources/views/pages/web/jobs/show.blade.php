@@ -35,8 +35,8 @@
                 "@type": "JobPosting",
                 "title": "{{$job->name}}",
 
-                "description": "{{strip_tags($job->description)}}",
-                "datePosted": "{{$job->created_at}}",
+                "description": "{{$job->name . ' ' . str(strip_tags($job->description))->limit(100)}}",
+                "datePosted": "{{$job->updated_at}}",
                 "employmentType": "{{$type}}",
                 "hiringOrganization": {
                     "@type": "Organization",
