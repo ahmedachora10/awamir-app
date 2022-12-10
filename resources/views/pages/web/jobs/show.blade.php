@@ -28,7 +28,7 @@
 
     @endphp
 
-    @push('scripts')
+    @push('head-scripts')
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org/",
@@ -36,7 +36,7 @@
                 "title": "{{$job->name}}",
 
                 "description": "{{$job->name . '. ' . str(strip_tags($job->description))->limit(100)}}",
-                "datePosted": "{{$job->updated_at}}",
+                "datePosted": "{{$job->updated_at->format('Y-m-d')}}",
                 "employmentType": "{{$type}}",
                 "hiringOrganization": {
                     "@type": "Organization",
