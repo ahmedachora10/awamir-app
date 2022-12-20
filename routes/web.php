@@ -7,6 +7,7 @@ use App\Http\Controllers\Web\SubscriberController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,7 +75,10 @@ Route::controller(PostController::class)->prefix('jobs')->name('web.jobs.')->gro
 
 Route::post('subscriber/store', [SubscriberController::class, 'store'])->name('web.subscriber');
 
-
+Route::get('/sitemap', function ()
+{
+    return Storage::get(Storage::path('sitemap.xml'));
+});
 
 require __DIR__.'/dashboard.php';
 
