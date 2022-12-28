@@ -35,7 +35,7 @@
                 "@type": "JobPosting",
                 "title": "{{$job->name}}",
 
-                "description": "{{$job->name . '. ' . str(strip_tags($job->description))->limit(100)}}",
+                "description": "<p>{{$job->name . '. ' . $job->description}}</p>",
                 "datePosted": "{{$job->created_at->format('Y-m-d')}}",
                 "validThrough": "{{ $job->created_at->addDays(25)->format('Y-m-d') }}",
                 "employmentType": "{{$type}}",
