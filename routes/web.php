@@ -75,10 +75,10 @@ Route::controller(PostController::class)->prefix('jobs')->name('web.jobs.')->gro
 
 Route::post('subscriber/store', [SubscriberController::class, 'store'])->name('web.subscriber');
 
-Route::get('/sitemap', function ()
-{
-    return Storage::get(Storage::path('sitemap.xml'));
-});
+// Route::get('/sitemap', function ()
+// {
+//     return Storage::get(public_path('sitemap.xml'));
+// });
 
 require __DIR__.'/dashboard.php';
 

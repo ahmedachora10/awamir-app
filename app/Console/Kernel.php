@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use Spatie\Sitemap\SitemapGenerator;
 use App\Jobs\ChangeRegisterCvLinks;
 use App\Jobs\ChangeRegisterThroughAwamirLinks;
 use App\Jobs\ChangeSocialMediaPlatform;
@@ -23,6 +24,11 @@ class Kernel extends ConsoleKernel
         $schedule->call(new ChangeSocialMediaPlatform)->everyMinute();
         $schedule->call(new ChangeRegisterThroughAwamirLinks)->everyMinute();
         $schedule->call(new ChangeRegisterCvLinks)->everyMinute();
+
+        $schedule->call(function ()
+        {
+            SitemapGenerator::create(env('APP_URL'))->getSitemap()->writeToFile(public_path('sitemap.xml'));
+        })->monthlyOn(1, '00:00');
     }
 
     /**
