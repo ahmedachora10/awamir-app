@@ -6,7 +6,7 @@ use App\Models\Setting;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Spatie\Sitemap\SitemapGenerator;
+// use Spatie\Sitemap\SitemapGenerator;
 
 class AppServiceProvider extends ServiceProvider
 {
