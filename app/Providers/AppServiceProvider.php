@@ -31,6 +31,6 @@ class AppServiceProvider extends ServiceProvider
         // View::share('settings', collect(Setting::all()));
         // config('app.name', settings('site_name'));
 
-        SitemapGenerator::create(env('APP_URL'))->getSitemap()->writeToFile(public_path('sitemap.xml'));
+        // SitemapGenerator::create(env('APP_URL'))->getSitemap()->writeToFile(public_path('sitemap.xml'));
     }
 }
