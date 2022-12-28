@@ -25,10 +25,10 @@ class Kernel extends ConsoleKernel
         $schedule->call(new ChangeRegisterThroughAwamirLinks)->everyMinute();
         $schedule->call(new ChangeRegisterCvLinks)->everyMinute();
 
-        $schedule->call(function ()
-        {
-            SitemapGenerator::create(env('APP_URL'))->getSitemap()->writeToFile(public_path('sitemap.xml'));
-        })->monthlyOn(1, '00:00');
+        // $schedule->call(function ()
+        // {
+        //     SitemapGenerator::create(env('APP_URL'))->getSitemap()->writeToFile(public_path('sitemap.xml'));
+        // })->monthlyOn(1, '00:00');
     }
 
     /**
